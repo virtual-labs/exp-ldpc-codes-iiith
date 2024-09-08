@@ -2,26 +2,33 @@
 
 const setOfH = [
     [
-        [1, 0, 1, 0, 1],  // Parity-check 1
-        [0, 1, 1, 1, 0],  // Parity-check 2
-        [1, 1, 0, 1, 0],  // Parity-check 3
+        [1, 0, 1, 0, 1],  
+        [0, 1, 1, 1, 0],  
+        [1, 1, 0, 1, 0],  
     ],
     [
-        [1, 0, 1, 0, 1, 1, 0],  // Parity-check 1
-        [0, 1, 1, 1, 0, 0, 1],  // Parity-check 2
-        [1, 1, 0, 1, 0, 0, 0],  // Parity-check 3
+        [1, 0, 1, 0, 1, 1, 0],  
+        [0, 1, 1, 1, 0, 0, 1],  
+        [1, 1, 0, 1, 0, 0, 0],  
     ],
     [
-        [1, 0, 1, 0, 1, 1, 0, 0, 0],  // Parity-check 1
-        [0, 1, 1, 1, 0, 0, 1, 0, 0],  // Parity-check 2
-        [1, 1, 0, 1, 0, 0, 0, 1, 0],  // Parity-check 3
-        [1, 0, 0, 0, 1, 0, 0, 0, 1],  // Parity-check 4
+        [1, 0, 1, 0, 1, 1],
+        [1, 1, 0, 0, 0, 1],
+        [0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 1, 1, 0],
     ],
+    [ 
+        [0, 0, 1, 1, 0, 0, 0],
+        [1, 1, 0, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0, 1, 0],
+        [1, 0, 0, 0, 0, 0, 1],
+    ],
+
 ];
 
 // select a random H matrix
-
-const H = setOfH[Math.floor(Math.random() * setOfH.length)];
+const correctOption = Math.floor(Math.random() * setOfH.length);
+const H = setOfH[correctOption];
 
 // SVG dimensions
 const width = 600;
@@ -175,6 +182,83 @@ function adjustSVGSize() {
 }
 
 
+// Other three options that are not the chosen H matrix
+const incorrectOptions = setOfH.filter(h => !arraysEqual(h, H)).slice(0, 3);
+
+// Helper function to compare two arrays
+function arraysEqual(a, b) {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i++) {
+        if (a[i].length !== b[i].length) return false;
+        for (let j = 0; j < a[i].length; j++) {
+            if (a[i][j] !== b[i][j]) return false;
+        }
+    }
+    return true;
+}
+
+// Function to create and add options to the form
+function addOptionsToForm() {
+    // Helper function to convert matrix to LaTeX
+    function matrixToLatex(matrix) {
+        return '\\begin{bmatrix}' + matrix.map(row => row.join(' & ')).join(' \\\\ ') + '\\end{bmatrix}';
+    }
+
+    // Define all options (correct and incorrect) without labeling correctness
+    const options = [
+        { id: 'option0', value: 'Matrix Option 0', matrix: H },
+        ...incorrectOptions.map((h, index) => ({
+            id: `option${index + 1}`,
+            value: `Matrix Option ${index + 1}`,
+            matrix: h
+        }))
+    ];
+
+    // Get the form element
+    const form = document.getElementById('form1');
+
+    // Create and append options
+    options.forEach(option => {
+        // Create a div to contain the radio button and matrix
+        const div = document.createElement('div');
+        div.className = 'option';
+
+        // Create the radio button
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = 'hMatrix'; // Make sure all options have the same name
+        radio.id = option.id;
+        radio.value = option.value;
+
+        // Create a label for the radio button
+        const label = document.createElement('label');
+        label.htmlFor = option.id;
+        label.style.display = 'flex';
+
+        // Create a div for the matrix
+        const matrixDiv = document.createElement('div');
+        matrixDiv.className = 'matrix';
+        matrixDiv.innerHTML = `$$${matrixToLatex(option.matrix)}$$`;
+
+        // Append radio button and matrix to the label
+        label.appendChild(radio);
+        label.appendChild(matrixDiv);
+
+        // Append the label to the div
+        div.appendChild(label);
+
+        // Append the div to the form
+        form.appendChild(div);
+    });
+
+    // Render the MathJax content
+    // MathJax.typeset();
+}
+
+// Call the function to add options to the form
+addOptionsToForm();
+
 // Initial call to update links based on static positions
 updateLinks();
 adjustSVGSize();
+
