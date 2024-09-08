@@ -38,9 +38,9 @@
       "content-type": "text"
     },
     {
-      "target": "my_exp_name.html",
-      "source": "simulation/my_exp_name.html",
-      "label": "Exp Name",
+      "target": "ldpc_codes.html",
+      "source": "simulation/ldpc_codes.html",
+      "label": "LDPC Codes",
       "unit-type": "task",
       "content-type": "simulation"
     },
