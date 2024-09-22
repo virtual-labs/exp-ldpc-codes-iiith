@@ -29,7 +29,7 @@
 // select a random H matrix
 
 const rows = Math.floor(Math.random() * 3) + 3;
-const cols = Math.floor(Math.random() * 3) + rows;
+const cols = Math.floor(Math.random() * 3) + rows + 1;
 
 const { setOfH, correctOption } = generateParityCheckMatrixOptions(rows, cols);
 // const correctOption = Math.floor(Math.random() * setOfH.length);
