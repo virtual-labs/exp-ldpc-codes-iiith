@@ -39,7 +39,7 @@ const checkXShiftLabel = 15;
 const yLabelShift = 5;
 
 // Append an SVG element to the #sentCodeword element
-const svg = d3.select("#sentCodeword")
+const svg = d3.select("#tannerGraph")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
