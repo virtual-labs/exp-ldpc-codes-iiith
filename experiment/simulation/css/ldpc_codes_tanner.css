@@ -11,3 +11,138 @@
 .matrix {
     text-align: center;
 }
+
+
+.v-collapsible-instruction-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .v-content {
+    padding-left: 10%; 
+    padding-right: 10%;
+    text-align: left;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  
+  p, li {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  
+  @media (max-width: 768px) {
+    .v-content {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  
+    p, li {
+      font-size: 0.9em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .v-content {
+      padding-left: 3%;
+      padding-right: 3%;
+    }
+  
+    p, li {
+      font-size: 0.8em;
+    }
+  }
+  
+
+
+
+/* ############################ */
+
+
+.v-datalist-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    border: 1px solid #ddd; 
+    margin-bottom: 1.5em;
+    max-width: 100%; 
+  }
+  
+  .channelBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+    padding: 1em;
+    overflow: hidden; 
+  }
+  
+  #awgnTopQuestion {
+    font-size: 1em;
+    word-break: break-word; 
+    max-width: 100%; 
+    overflow-wrap: break-word; 
+    white-space: normal; 
+  }
+  
+  #sentCodeword, #receivedCodeword {
+    font-size: 1em;
+    overflow-wrap: break-word; 
+    word-wrap: break-word;
+    white-space: normal;
+    max-width: 100%; 
+  }
+  
+  #sentCodeword svg, #receivedCodeword svg {
+    max-width: 100%; 
+    height: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .v-datalist-container {
+      padding: 0.5em;
+    }
+  
+    .channelBlock {
+      flex-direction: column; 
+      align-items: flex-start;
+    }
+  
+    p {
+      font-size: 0.9em; 
+    }
+  
+    #awgnTopQuestion {
+      font-size: 0.9em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .v-datalist-container {
+      padding: 0.5em;
+    }
+  
+    .channelBlock {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    #awgnTopQuestion {
+      font-size: 0.8em; 
+    }
+  
+    #sentCodeword, #receivedCodeword {
+      font-size: 0.8em;
+      max-width: 100%;
+    }
+  
+    #sentCodeword svg, #receivedCodeword svg {
+      max-width: 80%;
+      height: auto;
+    }
+  }
+  
