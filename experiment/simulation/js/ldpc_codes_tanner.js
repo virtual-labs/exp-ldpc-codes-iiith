@@ -1,33 +1,38 @@
 // set of H matrices for LDPC codes
 
-const setOfH = [
-    [
-        [1, 0, 1, 0, 1],
-        [0, 1, 1, 1, 0],
-        [1, 1, 0, 1, 0],
-    ],
-    [
-        [1, 0, 1, 0, 1, 1, 0],
-        [0, 1, 1, 1, 0, 0, 1],
-        [1, 1, 0, 1, 0, 0, 0],
-    ],
-    [
-        [1, 0, 1, 0, 1, 1],
-        [1, 1, 0, 0, 0, 1],
-        [0, 1, 1, 1, 0, 0],
-        [0, 0, 0, 1, 1, 0],
-    ],
-    [
-        [0, 0, 1, 1, 0, 0, 0],
-        [1, 1, 0, 0, 1, 0, 0],
-        [0, 1, 1, 0, 0, 1, 0],
-        [1, 0, 0, 0, 0, 0, 1],
-    ],
+// const setOfH = [
+//     [
+//         [1, 0, 1, 0, 1],
+//         [0, 1, 1, 1, 0],
+//         [1, 1, 0, 1, 0],
+//     ],
+//     [
+//         [1, 0, 1, 0, 1, 1, 0],
+//         [0, 1, 1, 1, 0, 0, 1],
+//         [1, 1, 0, 1, 0, 0, 0],
+//     ],
+//     [
+//         [1, 0, 1, 0, 1, 1],
+//         [1, 1, 0, 0, 0, 1],
+//         [0, 1, 1, 1, 0, 0],
+//         [0, 0, 0, 1, 1, 0],
+//     ],
+//     [
+//         [0, 0, 1, 1, 0, 0, 0],
+//         [1, 1, 0, 0, 1, 0, 0],
+//         [0, 1, 1, 0, 0, 1, 0],
+//         [1, 0, 0, 0, 0, 0, 1],
+//     ],
 
-];
+// ];
 
 // select a random H matrix
-const correctOption = Math.floor(Math.random() * setOfH.length);
+
+const rows = Math.floor(Math.random() * 3) + 3;
+const cols = Math.floor(Math.random() * 3) + rows + 1;
+
+const { setOfH, correctOption } = generateParityCheckMatrixOptions(rows, cols);
+// const correctOption = Math.floor(Math.random() * setOfH.length);
 const H = setOfH[correctOption];
 
 // SVG dimensions
@@ -262,3 +267,58 @@ addOptionsToForm();
 updateLinks();
 adjustSVGSize();
 
+
+
+function generateParityCheckMatrix(rows, cols, maxOnesPerRow = 3) {
+    // const k = Math.floor(rate * n);
+    // const rows = n - k;
+    // const cols = n;
+
+    // const maxOnesPerRow = Math.floor(cols / 4);
+
+    let H = Array.from({ length: rows }, () => Array(cols).fill(0));
+
+    for (let i = 0; i < rows; i++) {
+        let onesPositions = new Set();
+        while (onesPositions.size < maxOnesPerRow) {
+            let randCol = Math.floor(Math.random() * cols);
+            onesPositions.add(randCol);
+        }
+
+        for (let pos of onesPositions) {
+            H[i][pos] = 1;
+        }
+    }
+
+    // ensure that each column has at least one 1
+
+    for (let j = 0; j < cols; j++) {
+        let ones = H.map((row) => row[j]);
+        if (!ones.includes(1)) {
+            let randRow = Math.floor(Math.random() * rows);
+            H[randRow][j] = 1;
+        }
+    }
+
+    return H;
+}
+
+
+// output set of H matrices for LDPC codes
+function generateParityCheckMatrixOptions(rows, cols, maxOnesPerRow = 3) {
+    const NUM_OPTIONS = 4;
+    const setOfH = [];
+    let correctOption = Math.floor(Math.random() * NUM_OPTIONS);
+    for (let i = 0; i < NUM_OPTIONS; i++) {
+        setOfH.push(generateParityCheckMatrix(rows, cols, maxOnesPerRow));
+    }
+
+    // if the correct option is same as any other option, regenerate the incorrect option
+    for (let i = 0; i < NUM_OPTIONS; i++) {
+        if (i !== correctOption && arraysEqual(setOfH[i], setOfH[correctOption])) {
+            setOfH[i] = generateParityCheckMatrix(rows, cols, maxOnesPerRow);
+        }
+    }
+
+    return { setOfH, correctOption };
+}
