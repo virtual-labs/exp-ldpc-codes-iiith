@@ -2,14 +2,14 @@
 
 const setOfH = [
     [
-        [1, 0, 1, 0, 1],  
-        [0, 1, 1, 1, 0],  
-        [1, 1, 0, 1, 0],  
+        [1, 0, 1, 0, 1],
+        [0, 1, 1, 1, 0],
+        [1, 1, 0, 1, 0],
     ],
     [
-        [1, 0, 1, 0, 1, 1, 0],  
-        [0, 1, 1, 1, 0, 0, 1],  
-        [1, 1, 0, 1, 0, 0, 0],  
+        [1, 0, 1, 0, 1, 1, 0],
+        [0, 1, 1, 1, 0, 0, 1],
+        [1, 1, 0, 1, 0, 0, 0],
     ],
     [
         [1, 0, 1, 0, 1, 1],
@@ -17,7 +17,7 @@ const setOfH = [
         [0, 1, 1, 1, 0, 0],
         [0, 0, 0, 1, 1, 0],
     ],
-    [ 
+    [
         [0, 0, 1, 1, 0, 0, 0],
         [1, 1, 0, 0, 1, 0, 0],
         [0, 1, 1, 0, 0, 1, 0],
@@ -156,7 +156,7 @@ function adjustSVGSize() {
     // Get minimum and maximum x and y coordinates of the nodes
     const xValues = nodes.map(d => d.x);
     const yValues = nodes.map(d => d.y);
-    
+
     const minX = Math.min(...xValues) - nodeRadius;
     const maxX = Math.max(...xValues) + nodeRadius;
     const minY = Math.min(...yValues) - nodeRadius;

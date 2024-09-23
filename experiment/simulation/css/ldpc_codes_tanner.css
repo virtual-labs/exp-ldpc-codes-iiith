@@ -61,88 +61,103 @@
 
 
 .v-datalist-container {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1em;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    white-space: normal;
-    border: 1px solid #ddd; 
-    margin-bottom: 1.5em;
-    max-width: 100%; 
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+  margin-bottom: 1.5em;
+  max-width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.channelBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  overflow: hidden; 
+  width: 100%;
+}
+
+#awgnTopQuestion {
+  font-size: 1em;
+  word-break: break-word; 
+  max-width: 100%; 
+  overflow-wrap: break-word; 
+  white-space: normal; 
+  text-align: center; 
+}
+
+#tannerGraph svg {
+  width: 80%; 
+  height: 500px; 
+  max-width: 100%;
+  display: block;
+  margin: 0 auto; 
+}
+
+@media (max-width: 768px) {
+  .v-datalist-container {
+    padding: 0.5em;
   }
-  
+
   .channelBlock {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1em;
-    padding: 1em;
-    overflow: hidden; 
+    flex-direction: column; 
+    align-items: center; 
   }
-  
+
   #awgnTopQuestion {
-    font-size: 1em;
-    word-break: break-word; 
+    font-size: 0.9em;
+  }
+
+  #tannerGraph svg {
     max-width: 100%; 
-    overflow-wrap: break-word; 
-    white-space: normal; 
+    height: 300px;
   }
-  
-  #sentCodeword, #receivedCodeword {
-    font-size: 1em;
-    overflow-wrap: break-word; 
-    word-wrap: break-word;
-    white-space: normal;
+}
+
+@media (max-width: 480px) {
+  .v-datalist-container {
+    padding: 0.5em;
+  }
+
+  .channelBlock {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  #awgnTopQuestion {
+    font-size: 0.8em; 
+  }
+
+  #tannerGraph svg {
     max-width: 100%; 
   }
-  
-  #sentCodeword svg, #receivedCodeword svg {
-    max-width: 100%; 
-    height: auto;
+}
+
+
+
+
+@media (min-width: 1024px) {
+  #tannerGraph svg {
+      width: 90%; 
+      height: 500px; 
   }
-  
-  @media (max-width: 768px) {
-    .v-datalist-container {
-      padding: 0.5em;
-    }
-  
-    .channelBlock {
-      flex-direction: column; 
-      align-items: flex-start;
-    }
-  
-    p {
-      font-size: 0.9em; 
-    }
-  
-    #awgnTopQuestion {
-      font-size: 0.9em;
-    }
+}
+
+@media (min-width: 1440px) {
+  #tannerGraph svg {
+      width: 90%;
+      height: 600px; 
   }
-  
-  @media (max-width: 480px) {
-    .v-datalist-container {
-      padding: 0.5em;
-    }
-  
-    .channelBlock {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    #awgnTopQuestion {
-      font-size: 0.8em; 
-    }
-  
-    #sentCodeword, #receivedCodeword {
-      font-size: 0.8em;
-      max-width: 100%;
-    }
-  
-    #sentCodeword svg, #receivedCodeword svg {
-      max-width: 80%;
-      height: auto;
-    }
+}
+@media (max-width: 432px) {
+  #tannerGraph svg {
+      width: 100%;
+      height: 200px; 
   }
-  
+}
