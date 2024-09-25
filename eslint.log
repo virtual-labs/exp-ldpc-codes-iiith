@@ -1,0 +1,38 @@
+
+/home/runner/work/exp-ldpc-codes-iiith/exp-ldpc-codes-iiith/experiment/simulation/js/ldpc_codes.js
+  118:5   warning  'MathJax' is not defined                       no-undef
+  148:2   warning  'spmatrix' is not defined                      no-undef
+  148:12  warning  'code' is not defined                          no-undef
+  152:33  warning  'spmatrix' is not defined                      no-undef
+  156:5   warning  'MathJax' is not defined                       no-undef
+  157:5   warning  'MathJax' is not defined                       no-undef
+  162:10  warning  'matrixcheck' is defined but never used        no-unused-vars
+  169:17  warning  'code' is not defined                          no-undef
+  174:70  warning  'code' is not defined                          no-undef
+  178:75  warning  'code' is not defined                          no-undef
+  182:75  warning  'code' is not defined                          no-undef
+  192:10  warning  'isLDPCcode' is defined but never used         no-unused-vars
+  197:19  warning  'code' is not defined                          no-undef
+  197:35  warning  'code' is not defined                          no-undef
+  201:23  warning  'code' is not defined                          no-undef
+  205:24  warning  'code' is not defined                          no-undef
+  205:40  warning  'code' is not defined                          no-undef
+  239:10  warning  'nextLDPCquestion' is defined but never used   no-unused-vars
+  248:10  warning  'checkRatequestion' is defined but never used  no-unused-vars
+  255:15  warning  'spmatrix' is not defined                      no-undef
+  256:15  warning  'spmatrix' is not defined                      no-undef
+  258:11  warning  'rate' is assigned a value but never used      no-unused-vars
+
+/home/runner/work/exp-ldpc-codes-iiith/exp-ldpc-codes-iiith/experiment/simulation/js/ldpc_codes_tanner.js
+   42:13  warning  'd3' is not defined                        no-undef
+   92:7   warning  'node' is assigned a value but never used  no-unused-vars
+  101:11  warning  'd3' is not defined                        no-undef
+  126:29  warning  'd' is defined but never used              no-unused-vars
+  128:9   warning  'd3' is not defined                        no-undef
+  138:5   warning  'd3' is not defined                        no-undef
+  151:20  warning  'event' is defined but never used          no-unused-vars
+  151:27  warning  'd' is defined but never used              no-unused-vars
+  152:5   warning  'd3' is not defined                        no-undef
+
+✖ 31 problems (0 errors, 31 warnings)
+
