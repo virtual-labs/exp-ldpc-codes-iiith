@@ -104,20 +104,9 @@
 	<div class="columns is-centered">
 		<div class="column is-11-desktop is-12-tablet is-12-mobile">
 			<div class="v-datalist-container components-list" id="questionStatement">
-				<p id="awgnTopQuestion">Consider a AWGN channel with noise variance \(\dfrac{N_0}{2}=\) <span
-						id="noisevariance"></span> and a code
-					\(\mathcal{C}=\{\boldsymbol{c_1}=(0,0,0,0),\boldsymbol{c_2}=(1,0,1,0),\boldsymbol{c_3}=(0,1,0,1),\boldsymbol{c_4}=(1,1,1,1)\}\)
-					which can be represented in bi-polar form as
-					\(\mathcal{C}=\{\boldsymbol{c_1}=(1,1,1,1),\boldsymbol{c_2}=(-1,1,-1,1),\boldsymbol{c_3}=(1,-1,1,-1),\boldsymbol{c_4}=(-1,-1,-1,-1)\}\).
-				</p>
-				<div class="channelBlock">
-
-					<p id="sentCodeword"></p> &nbsp;
-					<img src="images/gaussian_channel.svg" alt="SVG Image" width="200" height="300"
-						style="padding-top:2.75em;">
-
-					&nbsp; <p id="receivedCodeword"></p>
-
+				<p id="ldpcquestion"> Consider the given Parity Check Matrix : <i><b>H</b></i> = </p>
+				<div id="pcmatrix">
+					Parity check matrix goes here.
 				</div>
 			</div>
 		</div>
@@ -128,98 +117,39 @@
 		<div class="column is-8-desktop is-12-tablet is-12-mobile">
 			<div class="box-question">
 
-				<section id="likelihoodQuestion">
-					<!-- https://stackoverflow.com/questions/67447944/mathjax-inputs -->
-					<!-- \( \int_{\input[sub][1em]{0}}^{\input[sup][1em]{1}} \input[integrand][10em]{}\, dx \) -->
-					<!-- \( p_{Y|X}(y|x)=\frac{1}{\sqrt{\pi N_0}}e^{\frac{-(\input[sub][1em])^2}{N_0}}, \forall x,y \in \mathbb{R}. \) -->
+				<section id="ldpcq1" style="display:block ;">
+					<p style="margin-bottom: 20px;"> Check if the Parity check matrix is <b><i>Non-Sparse</i></b>, a <b><i>Sparse but Irregular</i></b> or a <b><i>Sparse but Regular</i></b> matrix and check one of the options below.</p>
 
-					<p style="text-align: left;">
-						Imagine you are at the receiver and you have the above received vector
-						\(\boldsymbol{Y}=\boldsymbol{y}\). Note that the transmitted codeword is not known to receiver.
-						Receiver decides to use maximum likelihood decoding to estimate the transmitted codeword.
-						Help the receiver by calculating the likelihood of the above received vector \(\boldsymbol{y}\)
-						given each codeword \(\boldsymbol{c_i}\). Then select the maximum likelihood estimate codeword
-						and check if it is same as the transmitted codeword.
+					<div style="margin-bottom: 20px; vertical-align: middle;">
+						<label for="answera"><input type="checkbox" id="answera" name="answer" value="" required><b><i>Non-Sparse Matrix</i></b></label><br>
+						<label for="answerb"><input type="checkbox" id="answerb" name="answer" value="" required><b><i>Sparse but Irregular Matrix</i></b></label><br>
+						<label for="answerc"><input type="checkbox" id="answerc" name="answer" value="" required><b><i>Sparse but Regular Matrix</i></b></label><br>
 
-
-					</p>
-					<div class="likelihood-0">
-						<div class="mathContainer">
-							\( \displaystyle {p(\boldsymbol{y}|\boldsymbol{c_1})=\frac{1}{\sqrt{\pi^4
-							\input[N_0_first][2em]{}}}e^{\dfrac{-(
-							\input[y_x][3em]{} )^2}{\input[N_0_second][2em]{}}}} \)
-							<button class="v-button" role="button" onclick="checkLikelihood(0)"
-								style="margin-left: 5%;">Check</button>
-						</div>
+						<button style="margin-top: 20px;" class="v-button" role="button" onclick="matrixcheck()">Check</button>
 					</div>
-
-					<div class="likelihood-1">
-						<div class="mathContainer" id="c_2">
-							\( \displaystyle {p(\boldsymbol{y}|\boldsymbol{c_2})=\frac{1}{\sqrt{\pi^4
-							\input[N_0_first][2em]{}}}e^{\dfrac{-(
-							\input[y_x][3em]{} )^2}{\input[N_0_second][2em]{}}}} \)
-							<button class="v-button" role="button" onclick="checkLikelihood(1)"
-								style="margin-left: 5%;">Check</button>
-						</div>
-					</div>
-					<div class="likelihood-2">
-						<div class="mathContainer" id="c_3">
-							\( \displaystyle {p(\boldsymbol{y}|\boldsymbol{c_3})=\frac{1}{\sqrt{\pi^4
-							\input[N_0_first][2em]{}}}e^{\dfrac{-(
-							\input[y_x][3em]{} )^2}{\input[N_0_second][2em]{}}}} \)
-							<button class="v-button" role="button" onclick="checkLikelihood(2)"
-								style="margin-left: 5%;">Check</button>
-						</div>
-					</div>
-					<div class="likelihood-3">
-						<div class="mathContainer" id="c_4">
-							\( \displaystyle {p(\boldsymbol{y}|\boldsymbol{c_4})=\frac{1}{\sqrt{\pi^4
-							\input[N_0_first][2em]{}}}e^{\dfrac{-(
-							\input[y_x][3em]{} )^2}{\input[N_0_second][2em]{}}}} \)
-							<button class="v-button" role="button" onclick="checkLikelihood(3)"
-								style="margin-left: 5%;">Check</button>
-						</div>
-					</div>
-					<div id="max-likelihood">
-						<div class="mathContainer">
-							Enter the maximum likelihood estimate codeword:
-							<div class="dropdown">
-								<button id="dropbuttonText" class="dropbtn">Dropdown</button>
-								<div class="dropdown-content">
-									<a onclick="verifyMaxLikelihood(0)">\(c_1\)</a>
-									<a onclick="verifyMaxLikelihood(1)">\(c_2\)</a>
-									<a onclick="verifyMaxLikelihood(2)">\(c_3\)</a>
-									<a onclick="verifyMaxLikelihood(3)">\(c_4\)</a>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-					<div id="isMaxLikelihoodCorrect">
-						<p> Is the maximum likelihood estimate codeword same as the transmitted codeword?</p>
+					<div id="isldpccode">
+						<p> Does the above Parity Check Matrix define an LDPC code?</p>
 						<br>
-						<button class="v-button" role="button" onclick="isMaxLikelihoodCorrect(1)">Yes</button>
-						<button class="v-button" role="button" onclick="isMaxLikelihoodCorrect(0)">No</button>
+						<button class="v-button" role="button" onclick="isLDPCcode(1)">Yes</button>
+						<button class="v-button" role="button" onclick="isLDPCcode(0)">No</button>
+						<button id="nextButton" class="v-button" role="button" style="display: none;" onclick="nextLDPCquestion()">Next</button>
 					</div>
-
-					<br>
-
-					<!-- <button class="v-button" role="button" onclick="checkMLQuestion()">Check</button> -->
-					<button id="nextButton" class="v-button" role="button" style="display:none ;"
-						onclick="nextMLErrorQuestion()">Next</button>
-
 				</section>
 
-				<section id="MLErrorQuestion" style="display:none ;">
-					Select all of the below received vectors which lead to a decoding error when using maximum
-					likelihood decoding.
-					<br>
-					<br>
-
+				<section id="rateques" style="display:none ;">
+					Calculate the rate of the above parity Check Matrix of a LDPC code.
+					<div class="rate-input">
+						<b><i>Rate</i></b> = 
+						<div class="fraction" style="display: inline-block; text-align: center; vertical-align: middle;">
+							<input type="number" id="numerator" style="display: block; width: 75px; text-align: center; margin: 2px auto;" />
+							<div class="denom" style="border-top: 3px solid black;">
+								<input type="number" id="denominator" style="display: block; width: 75px; text-align: center; margin: 2px auto;"/>
+							</div>
+						</div>
+					</div>
 					<p id="receivedVectors"></p>
 					<br>
-					<button class="v-button" role="button" onclick="checkMLErrorQuestion()">Check</button>
+					<button class="v-button" role="button" onclick="checkRatequestion()">Check</button>
 				</section>
 			</div>
 		</div>
@@ -227,10 +157,9 @@
 		<div class="column is-3-desktop is-4-tablet is-12-mobile">
 			<div class="v-datalist-container components-list">
 				<div class="v-datalist-title">Observations</div>
-				<div id="observations">
-					<!-- <div id="output"></div> -->
-					<span id="likelihoodQuestionObservation">
-					</span>
+				<div id="observationsa">
+				</div>
+				<div id="observationsb">
 				</div>
 			</div>
 		</div>
