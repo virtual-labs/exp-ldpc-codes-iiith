@@ -49,7 +49,7 @@
 
 
         <div class="columns is-centered">
-            <div class="column">
+            <div class="column is-11-desktop is-12-tablet is-12-mobile">
                 <div class="v-collapsible-instruction-container v-instruction-container">
                     <div class="v-collapsible is-size-5">Instructions</div>
                     <div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
@@ -94,19 +94,11 @@
 
     <div class="columns is-centered">
         <div class="column is-11-desktop is-12-tablet is-12-mobile">
-            <div class="v-datalist-container components-list" id="questionStatement">
-                <p id="awgnTopQuestion">Consider a AWGN channel with noise variance \(\dfrac{N_0}{2}=\) <span
-                        id="noisevariance"></span> and a code
-                    \(\mathcal{C}=\{\boldsymbol{c_1}=(0,0,0,0),\boldsymbol{c_2}=(1,0,1,0),\boldsymbol{c_3}=(0,1,0,1),\boldsymbol{c_4}=(1,1,1,1)\}\) which can be represented in bi-polar form as
-                    \(\mathcal{C}=\{\boldsymbol{c_1}=(1,1,1,1),\boldsymbol{c_2}=(-1,1,-1,1),\boldsymbol{c_3}=(1,-1,1,-1),\boldsymbol{c_4}=(-1,-1,-1,-1)\}\). </p> 
+            <div class="v-datalist-container components-list is-centered is-flex-direction-column is-justify-content-center is-align-content-center" id="questionStatement">
+                <p id="awgnTopQuestion"> Consider the tanner graph shown below. </p>
                 <div class="channelBlock">
 
-                    <p id="sentCodeword"></p> &nbsp;
-                    <!-- <img src="images/gaussian_channel.svg" alt="SVG Image" width="200" height="300"
-                        style="padding-top:2.75em;"> -->
-                        
-
-                    &nbsp; <p id="receivedCodeword"></p>
+                    <p id="tannerGraph"></p> &nbsp;
 
                 </div>
             </div>
@@ -118,7 +110,7 @@
         <div class="column is-8-desktop is-12-tablet is-12-mobile">
             <div class="box-question">
                 
-                <section id="likelihoodQuestion">
+                <section id="tannerGraphQuestion">
                     <form action="" method="get" id="form1" onsubmit="return false">
                         <!-- Options will be added here -->
                     </form>

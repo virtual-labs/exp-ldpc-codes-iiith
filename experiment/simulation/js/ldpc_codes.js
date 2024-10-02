@@ -115,7 +115,7 @@ function matrixToLatex(matrix) {
     });
 
     // MathJax.typeset();
-    MathJax.typesetPromise();
+    // MathJax.typesetPromise();
 
     latexMatrix += '\\end{bmatrix}';
     return latexMatrix;
@@ -153,8 +153,8 @@ function updateMatrix(){
 
     paritycheckmatrix.innerHTML = `\\[ ${latex} \\]`;
 
-    MathJax.typeset();
-    MathJax.typesetPromise();
+    // MathJax.typeset();
+    // MathJax.typesetPromise();
 }
 
 updateMatrix();
