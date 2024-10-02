@@ -35,18 +35,11 @@ const NonSparseH = [
 
 const SparseRegularH = [
     [
-        [1, 0, 1, 0, 0, 1, 0, 1, 0, 0],
-        [0, 1, 0, 1, 0, 0, 1, 0, 1, 0],
-        [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],
-        [0, 1, 0, 0, 1, 0, 1, 0, 1, 0],
-        [0, 0, 1, 0, 1, 1, 0, 0, 0, 1]
-    ],
-    [
-        [1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-        [1, 0, 0, 0, 1, 1, 1, 0, 0, 0],
-        [0, 1, 0, 0, 1, 0, 0, 1, 1, 0],
-        [0, 0, 1, 0, 0, 1, 0, 1, 0, 1],
-        [0, 0, 0, 1, 0, 0, 1, 0, 1, 1]
+        [1, 1, 1, 0, 0, 1, 1, 0, 0, 1],
+        [1, 0, 1, 0, 1, 1, 0, 1, 1, 0],
+        [0, 0, 1, 1, 1, 0, 1, 0, 1, 1],
+        [0, 1, 0, 1, 1, 1, 0, 1, 0, 1],
+        [1, 1, 0, 1, 0, 0, 1, 1, 1, 0]
     ],
     [
         [1, 0, 1, 0, 0, 0, 0, 0],
@@ -56,8 +49,13 @@ const SparseRegularH = [
     ],
     [
         [1, 1, 0, 0, 0, 0],
-        [0, 1, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 1],
         [0, 0, 0, 1, 1, 0]
+    ],
+    [
+        [1, 0, 0, 0, 0, 1],
+        [0, 1, 0, 0, 1, 0],
+        [0, 0, 1, 1, 0, 0]
     ],
     [
         [1, 0, 0, 1, 0, 0, 1, 0, 0],
@@ -147,7 +145,7 @@ function chooserandommatrix(){
 
 [spmatrix, code] = chooserandommatrix();
 
-function updateMatrix(){
+window.onload = function(){
     const paritycheckmatrix = document.getElementById("pcmatrix");
     const latex = matrixToLatex(spmatrix);
 
@@ -156,7 +154,14 @@ function updateMatrix(){
     MathJax.typesetPromise();
 }
 
-updateMatrix();
+function updateMatrix(){
+    const paritycheckmatrix = document.getElementById("pcmatrix");
+    const latex = matrixToLatex(spmatrix);
+
+    paritycheckmatrix.innerHTML = `\\[ ${latex} \\]`;
+
+    MathJax.typesetPromise();
+}
 
 function matrixcheck(){
     const option1 = document.getElementById('answera').checked;
@@ -171,19 +176,19 @@ function matrixcheck(){
     console.log(option3);
 
     if(option1 === true && option2 === false && option3 === false && code[0] == 0){
-        obsa.innerHTML = "Correct! In this Parity Check matrix, the number of ones is much larger than the number of zeros hence it is Non-Sparse.";
+        obsa.innerHTML = "Correct! In this parity check matrix, the number of ones is much larger than the number of zeros hence it is non-sparse.";
         obsa.style.color = "green";
     }
     else if(option1 === false && option2 === true && option3 === false && code[0] == 2){
-        obsa.innerHTML = "Correct! In this Parity Check matrix, the number of ones is much smaller than the number of zeros hence it is Sparse and each row and column does not have the same number of ones hence it is Irregular.";
+        obsa.innerHTML = "Correct! In this parity check matrix, the number of ones is much smaller than the number of zeros hence it is sparse and each row and column does not have the same number of ones hence it is irregular.";
         obsa.style.color = "green";
     }
     else if(option1 === false && option2 === false && option3 === true && code[0] == 1){
-        obsa.innerHTML = "Correct! In this Parity Check matrix, the number of ones is much smaller than the number of zeros hence it is Sparse and each row and column has the same number of ones hence it is Regular.";
+        obsa.innerHTML = "Correct! In this parity check matrix, the number of ones is much smaller than the number of zeros hence it is sparse and each row and column has the same number of ones hence it is regular.";
         obsa.style.color = "green";
     }
     else{
-        obsa.innerHTML = "Wrong! Kindly go through the Theory and try again!";
+        obsa.innerHTML = "Wrong! Kindly go through the theory and try again!";
         obsa.style.color = "red";
     }
 }
@@ -194,20 +199,20 @@ function isLDPCcode(c){
     const nextbutton = document.getElementById('nextButton');
 
     if(c == 0 && (code[0] == 1 || code[0] == 2)){
-        obsb.innerHTML = "Wrong! The given Parity Check Matrix does define a LDPC code. Kindly check the Instructions and try again.";
+        obsb.innerHTML = "Wrong! The given parity check matrix does define a LDPC code. Kindly check the instructions and try again.";
         obsb.style.color = "red";
     }
     else if(c == 1 && code[0] == 0){
-        obsb.innerHTML = "Wrong! The given Parity Check Matrix does not define a LDPC code since it is a Non-Sparse Matrix. Kindly check the Instructions and try again.";
+        obsb.innerHTML = "Wrong! The given parity check matrix does not define a LDPC code since it is a non-sparse matrix. Kindly check the instructions and try again.";
         obsb.style.color = "red";
     }
     else if(c == 1 && (code[0] == 1 || code[0] == 2)){
-        obsb.innerHTML = "Correct! The given Parity Check Matrix does indeed define a LDPC code. You can proceed to next Sub-Experiment";
+        obsb.innerHTML = "Correct! The given parity check matrix does indeed define a LDPC code. You can proceed to next sub-experiment";
         obsb.style.color = "green";
         nextbutton.style.display = "block";
     }
     else{
-        obsb.innerHTML = "Correct! The given Parity Check Matrix does not define a LDPC code since it is a Non-Sparse Matrix.<br> Since the given Parity Check Matrix did not define a LDPC code, try again with another Parity Check Matrix.";
+        obsb.innerHTML = "Correct! The given parity check matrix does not define a LDPC code since it is a non-sparse matrix.<br> Since the given parity check matrix did not define a LDPC code, try again with another parity check matrix.";
         obsb.style.color = "green";
         
         [spmatrix, code] = chooserandommatrix();
@@ -269,7 +274,7 @@ function checkRatequestion(){
         obsa1.style.color = "red";
     }
     else{
-        obsa1.innerHTML = "The entered Rate is Correct!";
+        obsa1.innerHTML = "The entered rate is correct!";
         obsa1.style.color = "green";
     }
 

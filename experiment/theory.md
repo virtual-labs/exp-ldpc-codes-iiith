@@ -4,6 +4,7 @@
 
 Recall that a linear code ${\cal C}$ can be described as the set of all vectors which are orthogonal to its parity check matrix $H$, i.e., ${\cal C}=\{\boldsymbol{c}\in {\mathbb F}_2^n: H\boldsymbol{c}^T={\boldsymbol 0}\}$. 
 
+A matrix is said to be sparse when the number of ones is smaller than the number of zeros in the matrix.
 A ***Low-Density Parity Check (LDPC) code*** is one  which has a very sparse parity check matrix, i.e., in which the number of ones is much smaller than the number of zeros. For example, consider the matrix $H$,
 
 $$

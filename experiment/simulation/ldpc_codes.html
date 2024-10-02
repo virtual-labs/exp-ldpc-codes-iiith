@@ -103,7 +103,7 @@
 	<div class="columns is-centered">
 		<div class="column is-11-desktop is-12-tablet is-12-mobile">
 			<div class="v-datalist-container components-list" id="questionStatement">
-				<p id="ldpcquestion"> Consider the given Parity Check Matrix : <i><b>H</b></i> = </p>
+				<p id="ldpcquestion"> Consider the given parity check catrix : \(H\) = </p>
 				<div id="pcmatrix">
 					Parity check matrix goes here.
 				</div>
@@ -117,17 +117,17 @@
 			<div class="box-question">
 
 				<section id="ldpcq1" style="display:block ;">
-					<p style="margin-bottom: 20px;"> Check if the Parity check matrix is <b><i>Non-Sparse</i></b>, a <b><i>Sparse but Irregular</i></b> or a <b><i>Sparse but Regular</i></b> matrix and check one of the options below.</p>
+					<p style="margin-bottom: 20px;"> Check if the parity check matrix is <b><i>non-sparse</i></b>, a <b><i>sparse but irregular</i></b> or a <b><i>sparse but regular</i></b> matrix and check one of the options below.</p>
 
 					<div style="margin-bottom: 20px; vertical-align: middle;">
-						<label for="answera"><input type="checkbox" id="answera" name="answer" value="" required><b><i>Non-Sparse Matrix</i></b></label><br>
-						<label for="answerb"><input type="checkbox" id="answerb" name="answer" value="" required><b><i>Sparse but Irregular Matrix</i></b></label><br>
-						<label for="answerc"><input type="checkbox" id="answerc" name="answer" value="" required><b><i>Sparse but Regular Matrix</i></b></label><br>
+						<label for="answera"><input type="checkbox" id="answera" name="answer" value="" required><b><i>non-sparse matrix</i></b></label><br>
+						<label for="answerb"><input type="checkbox" id="answerb" name="answer" value="" required><b><i>sparse but irregular matrix</i></b></label><br>
+						<label for="answerc"><input type="checkbox" id="answerc" name="answer" value="" required><b><i>sparse but regular matrix</i></b></label><br>
 
 						<button style="margin-top: 20px;" class="v-button" role="button" onclick="matrixcheck()">Check</button>
 					</div>
 					<div id="isldpccode">
-						<p> Does the above Parity Check Matrix define a LDPC code?</p>
+						<p> Does the above parity check matrix define a LDPC code?</p>
 						<br>
 						<button class="v-button" role="button" onclick="isLDPCcode(1)">Yes</button>
 						<button class="v-button" role="button" onclick="isLDPCcode(0)">No</button>
@@ -136,7 +136,7 @@
 				</section>
 
 				<section id="rateques" style="display:none ;">
-					Calculate the rate of the above parity Check Matrix of a LDPC code.
+					Calculate the rate of the above parity check matrix of a LDPC code.
 					<div class="rate-input">
 						<b><i>Rate</i></b> = 
 						<div class="fraction" style="display: inline-block; text-align: center; vertical-align: middle;">
