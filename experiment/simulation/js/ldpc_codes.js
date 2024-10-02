@@ -153,7 +153,6 @@ function updateMatrix(){
 
     paritycheckmatrix.innerHTML = `\\[ ${latex} \\]`;
 
-    MathJax.typeset();
     MathJax.typesetPromise();
 }
 
@@ -172,19 +171,19 @@ function matrixcheck(){
     console.log(option3);
 
     if(option1 === true && option2 === false && option3 === false && code[0] == 0){
-        obsa.innerHTML = "Correct!";
+        obsa.innerHTML = "Correct! In this Parity Check matrix, the number of ones is much larger than the number of zeros hence it is Non-Sparse.";
         obsa.style.color = "green";
     }
-    else if(option1 === false && option2 === true && option3 === false && code[0] == 1){
-        obsa.innerHTML = "Correct!";
+    else if(option1 === false && option2 === true && option3 === false && code[0] == 2){
+        obsa.innerHTML = "Correct! In this Parity Check matrix, the number of ones is much smaller than the number of zeros hence it is Sparse and each row and column does not have the same number of ones hence it is Irregular.";
         obsa.style.color = "green";
     }
-    else if(option1 === false && option2 === false && option3 === true && code[0] == 2){
-        obsa.innerHTML = "Correct!";
+    else if(option1 === false && option2 === false && option3 === true && code[0] == 1){
+        obsa.innerHTML = "Correct! In this Parity Check matrix, the number of ones is much smaller than the number of zeros hence it is Sparse and each row and column has the same number of ones hence it is Regular.";
         obsa.style.color = "green";
     }
     else{
-        obsa.innerHTML = "Wrong";
+        obsa.innerHTML = "Wrong! Kindly go through the Theory and try again!";
         obsa.style.color = "red";
     }
 }
@@ -195,45 +194,28 @@ function isLDPCcode(c){
     const nextbutton = document.getElementById('nextButton');
 
     if(c == 0 && (code[0] == 1 || code[0] == 2)){
-        obsb.innerHTML = "Wrong! Check Insturctions and try again.";
+        obsb.innerHTML = "Wrong! The given Parity Check Matrix does define a LDPC code. Kindly check the Instructions and try again.";
         obsb.style.color = "red";
     }
     else if(c == 1 && code[0] == 0){
-        obsb.innerHTML = "Wrong! Check Insturctions and try again.";
+        obsb.innerHTML = "Wrong! The given Parity Check Matrix does not define a LDPC code since it is a Non-Sparse Matrix. Kindly check the Instructions and try again.";
         obsb.style.color = "red";
     }
     else if(c == 1 && (code[0] == 1 || code[0] == 2)){
-        obsb.innerHTML = "Correct! You can proceed to next subexp";
+        obsb.innerHTML = "Correct! The given Parity Check Matrix does indeed define a LDPC code. You can proceed to next Sub-Experiment";
         obsb.style.color = "green";
         nextbutton.style.display = "block";
     }
     else{
-        obsb.innerHTML = "Correct! Since the above matrix did not define a LDPC code. Try again with another matrix.";
+        obsb.innerHTML = "Correct! The given Parity Check Matrix does not define a LDPC code since it is a Non-Sparse Matrix.<br> Since the given Parity Check Matrix did not define a LDPC code, try again with another Parity Check Matrix.";
         obsb.style.color = "green";
-        reloadPage();
+        
+        [spmatrix, code] = chooserandommatrix();
+        updateMatrix();
+
         document.getElementById('observationsb').innerHTML = "Correct! Since the above matrix did not define a LDPC code. Try again with another matrix.";
         
     }
-}
-
-window.onload = function() {
-    // Check if there is any saved content in localStorage
-    const savedContent = localStorage.getItem('obs');
-    if (savedContent) {
-        document.getElementById('observationsb').innerHTML = savedContent;
-    }
-
-};
-
-function reloadPage() {
-    // Get the current innerHTML of the element you want to preserve
-    const content = document.getElementById('observationsb').innerHTML;
-    
-    // Save the current innerHTML to localStorage
-    localStorage.setItem('obs', content);
-    
-    // Reload the page
-    location.reload();
 }
 
 function nextLDPCquestion(){    
@@ -243,6 +225,27 @@ function nextLDPCquestion(){
     document.getElementById('observationsa').innerHTML = '';
     document.getElementById('observationsb').innerHTML = '';
 
+}
+
+function prevLDPCquestion(){    
+
+    document.getElementById('rateques').style.display = "none";
+    document.getElementById('ldpcq1').style.display = "block";
+    document.getElementById('observationsa').innerHTML = '';
+    document.getElementById('observationsb').innerHTML = '';
+
+}
+
+function gcd(a, b) {
+    return b === 0 ? a : gcd(b, a % b);
+}
+
+function reduceFraction(numerator, denominator) {
+    const divisor = gcd(numerator, denominator);
+    return {
+        numerator: numerator / divisor,
+        denominator: denominator / divisor
+    };
 }
 
 function checkRatequestion(){
@@ -255,14 +258,14 @@ function checkRatequestion(){
     const m = spmatrix.length;
     const n = spmatrix[0].length;
 
-    const rate = 1 - (m/n);
+    const ratefraction = reduceFraction((n-m), n);
 
-    if(num != (n-m)){
-        obsa1.innerHTML = "Kindly check the numerator again by going through the instructions."
+    if(num != ratefraction.numerator){
+        obsa1.innerHTML = "Kindly check the numerator of the fraction again by going through the instructions."
         obsa1.style.color = "red";
     }
-    else if(denom != n){
-        obsa1.innerHTML = "Kindly check the denominator again by going through the instructions."
+    else if(denom != ratefraction.denominator){
+        obsa1.innerHTML = "Kindly check the denominator of the fraction again by going through the instructions."
         obsa1.style.color = "red";
     }
     else{
@@ -272,7 +275,7 @@ function checkRatequestion(){
 
     console.log(num);
     console.log(denom);
-    console.log(n-m);
-    console.log(n);
+    console.log(ratefraction.numerator);
+    console.log(ratefraction.denominator);
 
 }
