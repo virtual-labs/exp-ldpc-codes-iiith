@@ -113,7 +113,7 @@ function matrixToLatex(matrix) {
     });
 
     // MathJax.typeset();
-    // MathJax.typesetPromise();
+    MathJax.typesetPromise();
 
     latexMatrix += '\\end{bmatrix}';
     return latexMatrix;
@@ -145,7 +145,7 @@ function chooserandommatrix(){
 
 [spmatrix, code] = chooserandommatrix();
 
-window.onload = function(){
+function updateMatrix(){
     const paritycheckmatrix = document.getElementById("pcmatrix");
     const latex = matrixToLatex(spmatrix);
 
@@ -214,30 +214,13 @@ function isLDPCcode(c){
     else{
         obsb.innerHTML = "Correct! The given parity check matrix does not define a LDPC code since it is a non-sparse matrix.<br> Since the given parity check matrix did not define a LDPC code, try again with another parity check matrix.";
         obsb.style.color = "green";
-        reloadPage();
+        
+        [spmatrix, code] = chooserandommatrix();
+        updateMatrix();
+
         document.getElementById('observationsb').innerHTML = "Correct! Since the above matrix did not define a LDPC code. Try again with another matrix.";
         
     }
-}
-
-window.onload = function() {
-    // Check if there is any saved content in localStorage
-    const savedContent = localStorage.getItem('obs');
-    if (savedContent) {
-        document.getElementById('observationsb').innerHTML = savedContent;
-    }
-
-};
-
-function reloadPage() {
-    // Get the current innerHTML of the element you want to preserve
-    const content = document.getElementById('observationsb').innerHTML;
-    
-    // Save the current innerHTML to localStorage
-    localStorage.setItem('obs', content);
-    
-    // Reload the page
-    location.reload();
 }
 
 function nextLDPCquestion(){    
@@ -247,6 +230,27 @@ function nextLDPCquestion(){
     document.getElementById('observationsa').innerHTML = '';
     document.getElementById('observationsb').innerHTML = '';
 
+}
+
+function prevLDPCquestion(){    
+
+    document.getElementById('rateques').style.display = "none";
+    document.getElementById('ldpcq1').style.display = "block";
+    document.getElementById('observationsa').innerHTML = '';
+    document.getElementById('observationsb').innerHTML = '';
+
+}
+
+function gcd(a, b) {
+    return b === 0 ? a : gcd(b, a % b);
+}
+
+function reduceFraction(numerator, denominator) {
+    const divisor = gcd(numerator, denominator);
+    return {
+        numerator: numerator / divisor,
+        denominator: denominator / divisor
+    };
 }
 
 function checkRatequestion(){
@@ -259,24 +263,21 @@ function checkRatequestion(){
     const m = spmatrix.length;
     const n = spmatrix[0].length;
 
+    const ratefraction = reduceFraction((n-m), n);
+
     const rate = 1 - (m/n);
 
-    if(num != (n-m)){
-        obsa1.innerHTML = "Kindly check the numerator again by going through the instructions."
+    if(num != ratefraction.numerator){
+        obsa1.innerHTML = "Kindly check the numerator of the fraction again by going through the instructions."
         obsa1.style.color = "red";
     }
-    else if(denom != n){
-        obsa1.innerHTML = "Kindly check the denominator again by going through the instructions."
+    else if(denom != ratefraction.denominator){
+        obsa1.innerHTML = "Kindly check the denominator of the fraction again by going through the instructions."
         obsa1.style.color = "red";
     }
     else{
         obsa1.innerHTML = "The entered rate is correct!";
         obsa1.style.color = "green";
     }
-
-    console.log(num);
-    console.log(denom);
-    console.log(n-m);
-    console.log(n);
 
 }
