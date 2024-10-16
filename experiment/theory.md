@@ -40,9 +40,7 @@ A graph is a collection of ***vertices*** (drawn as points on a plane, typically
 
 The figure below shows the Tanner graph of the matrix $H$ given in the example above. 
 
----
-NEED NICELY DRAWN FIGURE OF TANNER GRAPH OF ABOVE MATRIX. 
----
+<img src="images/Theory_TannerGraph.svg" alt="Tanner Graph">
 
 Observe that the degree of each variable node, which is the number of check nodes with which it has an edge, represents the number of parity check equations in which the corresponding coordinate participates in. For instance, the coordinate $c_2$ participates in two check equations in the given example. So, the degree of variable node $c_2$ is precisely two in the graph. Similarly, the degree of each check node is the number of coordinates that participate in the specific parity check equation. For instance, the first check node has degree $3$, as the first parity check equation involves three variables. 
 
