@@ -1,33 +1,38 @@
 // set of H matrices for LDPC codes
 
-const setOfH = [
-    [
-        [1, 0, 1, 0, 1],  
-        [0, 1, 1, 1, 0],  
-        [1, 1, 0, 1, 0],  
-    ],
-    [
-        [1, 0, 1, 0, 1, 1, 0],  
-        [0, 1, 1, 1, 0, 0, 1],  
-        [1, 1, 0, 1, 0, 0, 0],  
-    ],
-    [
-        [1, 0, 1, 0, 1, 1],
-        [1, 1, 0, 0, 0, 1],
-        [0, 1, 1, 1, 0, 0],
-        [0, 0, 0, 1, 1, 0],
-    ],
-    [ 
-        [0, 0, 1, 1, 0, 0, 0],
-        [1, 1, 0, 0, 1, 0, 0],
-        [0, 1, 1, 0, 0, 1, 0],
-        [1, 0, 0, 0, 0, 0, 1],
-    ],
+// const setOfH = [
+//     [
+//         [1, 0, 1, 0, 1],
+//         [0, 1, 1, 1, 0],
+//         [1, 1, 0, 1, 0],
+//     ],
+//     [
+//         [1, 0, 1, 0, 1, 1, 0],
+//         [0, 1, 1, 1, 0, 0, 1],
+//         [1, 1, 0, 1, 0, 0, 0],
+//     ],
+//     [
+//         [1, 0, 1, 0, 1, 1],
+//         [1, 1, 0, 0, 0, 1],
+//         [0, 1, 1, 1, 0, 0],
+//         [0, 0, 0, 1, 1, 0],
+//     ],
+//     [
+//         [0, 0, 1, 1, 0, 0, 0],
+//         [1, 1, 0, 0, 1, 0, 0],
+//         [0, 1, 1, 0, 0, 1, 0],
+//         [1, 0, 0, 0, 0, 0, 1],
+//     ],
 
-];
+// ];
 
 // select a random H matrix
-const correctOption = Math.floor(Math.random() * setOfH.length);
+
+const rows = Math.floor(Math.random() * 3) + 3;
+const cols = Math.floor(Math.random() * 3) + rows + 1;
+
+const { setOfH, correctOption } = generateParityCheckMatrixOptions(rows, cols);
+// const correctOption = Math.floor(Math.random() * setOfH.length);
 const H = setOfH[correctOption];
 
 // SVG dimensions
@@ -39,7 +44,7 @@ const checkXShiftLabel = 15;
 const yLabelShift = 5;
 
 // Append an SVG element to the #sentCodeword element
-const svg = d3.select("#sentCodeword")
+const svg = d3.select("#tannerGraph")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -53,15 +58,15 @@ const verticalOffset = 50;
 
 // Define variable nodes (bits) and check nodes (parity checks)
 const bitNodes = H[0].map((_, j) => ({
-    id: "bit" + j,
-    type: "bit",
+    id: "x" + j,
+    type: "x",
     x: bitNodeStartX,
     y: j * bitNodeSpacingY + verticalOffset
 }));
 
 const checkNodes = H.map((_, i) => ({
-    id: "check" + i,
-    type: "check",
+    id: "z" + i,
+    type: "z",
     x: checkNodeStartX,
     y: i * checkNodeSpacingY + verticalOffset
 }));
@@ -74,7 +79,7 @@ const links = [];
 H.forEach((row, i) => {
     row.forEach((val, j) => {
         if (val === 1) {
-            links.push({ source: "bit" + j, target: "check" + i });
+            links.push({ source: "x" + j, target: "z" + i });
         }
     });
 });
@@ -95,7 +100,7 @@ const node = svg.append("g")
     .data(nodes)
     .enter().append("circle")
     .attr("r", nodeRadius)
-    .attr("fill", d => d.type === "bit" ? "blue" : "green")
+    .attr("fill", d => d.type === "x" ? "blue" : "green")
     .attr("cx", d => d.x)
     .attr("cy", d => d.y)
     .call(d3.drag()
@@ -110,7 +115,7 @@ const labels = svg.append("g")
     .selectAll("text")
     .data(nodes)
     .enter().append("text")
-    .attr("x", d => d.type === "bit" ? d.x - nodeRadius - bitXShiftLabel : d.x + nodeRadius + checkXShiftLabel) // Shift labels based on node type
+    .attr("x", d => d.type === "x" ? d.x - nodeRadius - bitXShiftLabel : d.x + nodeRadius + checkXShiftLabel) // Shift labels based on node type
     .attr("y", d => d.y + yLabelShift)
     .text(d => d.id);
 
@@ -141,7 +146,7 @@ function dragged(event, d) {
 
     // Update labels positions
     labels.filter(l => l.id === d.id)
-        .attr("x", d.type === "bit" ? d.x - nodeRadius - bitXShiftLabel : d.x + nodeRadius + checkXShiftLabel)
+        .attr("x", d.type === "x" ? d.x - nodeRadius - bitXShiftLabel : d.x + nodeRadius + checkXShiftLabel)
         .attr("y", d.y + yLabelShift);
 
     // Update the links connected to this node
@@ -156,7 +161,7 @@ function adjustSVGSize() {
     // Get minimum and maximum x and y coordinates of the nodes
     const xValues = nodes.map(d => d.x);
     const yValues = nodes.map(d => d.y);
-    
+
     const minX = Math.min(...xValues) - nodeRadius;
     const maxX = Math.max(...xValues) + nodeRadius;
     const minY = Math.min(...yValues) - nodeRadius;
@@ -262,3 +267,83 @@ addOptionsToForm();
 updateLinks();
 adjustSVGSize();
 
+
+
+function generateParityCheckMatrix(rows, cols, maxOnesPerRow = 3) {
+    // const k = Math.floor(rate * n);
+    // const rows = n - k;
+    // const cols = n;
+
+    // const maxOnesPerRow = Math.floor(cols / 4);
+
+    let H = Array.from({ length: rows }, () => Array(cols).fill(0));
+
+    for (let i = 0; i < rows; i++) {
+        let onesPositions = new Set();
+        while (onesPositions.size < maxOnesPerRow) {
+            let randCol = Math.floor(Math.random() * cols);
+            onesPositions.add(randCol);
+        }
+
+        for (let pos of onesPositions) {
+            H[i][pos] = 1;
+        }
+    }
+
+    // ensure that each column has at least one 1
+
+    for (let j = 0; j < cols; j++) {
+        let ones = H.map((row) => row[j]);
+        if (!ones.includes(1)) {
+            let randRow = Math.floor(Math.random() * rows);
+            H[randRow][j] = 1;
+        }
+    }
+
+    return H;
+}
+
+
+// output set of H matrices for LDPC codes
+function generateParityCheckMatrixOptions(rows, cols, maxOnesPerRow = 3) {
+    const NUM_OPTIONS = 4;
+    const setOfH = [];
+    let correctOption = Math.floor(Math.random() * NUM_OPTIONS);
+    for (let i = 0; i < NUM_OPTIONS; i++) {
+        setOfH.push(generateParityCheckMatrix(rows, cols, maxOnesPerRow));
+    }
+
+    // if the correct option is same as any other option, regenerate the incorrect option
+    for (let i = 0; i < NUM_OPTIONS; i++) {
+        if (i !== correctOption && arraysEqual(setOfH[i], setOfH[correctOption])) {
+            setOfH[i] = generateParityCheckMatrix(rows, cols, maxOnesPerRow);
+        }
+    }
+
+    return { setOfH, correctOption };
+}
+
+function submit() {
+    tannerGraphQuestion = document.getElementById("tannerGraphQuestion");
+    tannerQuestionObservation = document.getElementById("tannerQuestionObservation");
+
+    correctPrompt = "Great job! You've selected the correct parity check matrix for the Tanner graph.";
+    incorrectPrompt = "No, that's not the right matrix. Please review your choice and try again.";
+    wrongAgainPrompt = "Oops! You've chosen the wrong option again. Please review your choice and try again.";
+
+    const form = document.getElementById('form1');
+    const selectedOption = Array.from(form.elements).find(el => el.checked);
+
+    if (tannerQuestionObservation.innerHTML == incorrectPrompt) {
+        tannerQuestionObservation.innerHTML = wrongAgainPrompt;
+        tannerQuestionObservation.style.color = "red";
+    }
+    else if (selectedOption && selectedOption.value === `Matrix Option ${correctOption + 1}`) {
+        tannerQuestionObservation.innerHTML = correctPrompt;
+        tannerQuestionObservation.style.color = "green";
+    } else {
+        tannerQuestionObservation.innerHTML = incorrectPrompt;
+        tannerQuestionObservation.style.color = "red";
+    }
+
+}

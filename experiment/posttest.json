@@ -2,38 +2,89 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Let $\\mathcal{C}$ be a regular LDPC code with a $5$-by-$6$ parity-check matrix $H$ of rank $3$. Select the correct pair for the $\\textbf{ rate }$ and $\\textbf{ design rate }$ of the code.",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "$\\textbf{ rate } = \\frac{1}{2}$ and $\\textbf{ design rate } = \\frac{1}{2}$",
+        "b": "$\\textbf{ rate } = \\frac{1}{6}$ and $\\textbf{ design rate } = \\frac{1}{6}$",
+        "c": "$\\textbf{ rate } = \\frac{1}{6}$ and $\\textbf{ design rate } = \\frac{1}{2}$",
+        "d": "$\\textbf{ rate } = \\frac{1}{2}$ and $\\textbf{ design rate } = \\frac{1}{6}$"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": " The code rate is correct, but the design rate should be calculated by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$.",
+        "b": " The design rate is correct, but the code rate is incorrect. The code rate is calculated by $\\frac{\\text{ rank of }H}{n}$",
+        "c": " Both the rate and design rate are incorrect. The rate is calculate by $\\frac{\\text{ rank of } H}{n}$, and the design rate should be calculated by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$.",
+        "d": " This is the correct answer. The code rate is $\\frac{\\text{ rank of }H}{n}$, and the design rate is calculate by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$."
       },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Select the correct parity-check matrix $H$ for a $\\textit{ regular }$ LDPC code with block length $n = 6$ and check nodes $n-k = 3$.",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "$H = \\begin{bmatrix} 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 1 & 0 & 1 & 0 & 0 & 1 \\end{bmatrix}$",
+        "b": "$H = \\begin{bmatrix} 1 & 0 & 1 & 0 & 1 & 1 \\\\ 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 1 & 0 & 1 \\end{bmatrix}$",
+        "c": "$H = \\begin{bmatrix} 1 & 0 & 1 & 1 & 0 & 0 \\\\ 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 1 & 1 & 0 & 0 & 1 \\end{bmatrix}$",
+        "d": "$H = \\begin{bmatrix} 1 & 0 & 1 & 1 & 0 & 1 \\\\ 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 1 & 1 & 0 & 0 & 1 \\end{bmatrix}$"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": " This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here.",
+        "b": " This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here.",
+        "c": " Correct option. This parity-check matrix does satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is the case here.",
+        "d": " This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following is a characteristic property of a bipartite graph?",
+      "answers": {
+        "a": "It contains at least one odd cycle.",
+        "b": "All vertices can be divided into two sets such that no two vertices within the same set are adjacent.",
+        "c": "All edges of the graph connect vertices within the same set.",
+        "d": "It contains an even number of vertices."
+      },
+      "explanations": {
+        "a": " A bipartite graph cannot have odd cycles.",
+        "b": " This is the defining characteristic of a bipartite graph.",
+        "c": " This is not true; edges in bipartite graphs connect vertices from different sets.",
+        "d": " The number of vertices is not necessarily even in bipartite graphs."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following LDPC codes is expected to perform better in practice, particularly in terms of error correction capability, given sufficient large block length?",
+      "answers": {
+        "a": "A regular LDPC code with large block lengths.",
+        "b": "An irregular LDPC code with large block lengths.",
+        "c": "A regular LDPC code with short block lengths.",
+        "d": "An irregular LDPC code with short block lengths."
+      },
+      "explanations": {
+        "a": " While regular LDPC codes are easier to analyze, they may not perform as well as irregular codes in practice with large block lengths due to optimized connections.",
+        "b": " Correct option. Irregular LDPC codes are known to perform better in practice, wspecially with large block lengths, as their structureallows for optimized variable and check node connections.",
+        "c": " Short block lengths reduce error correction performance in both regular and irregular codes.",
+        "d": " Irregular LDPC codes perform better with larger block lengths, so short block lengths reduce performance."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },            
+    {
+      "question": "Choose the correct parity-check matrix that corresponds to the given Tanner graph: <img src=\"./images/exp-3-test.svg\" style=\"width: 250px; height: auto;\">",
+      "answers": {
+        "a": "$H = \\begin{bmatrix} 1 & 0 & 1 & 0 & 1 & 0 \\\\ 0 & 1 & 0 & 1 & 0 & 1 \\\\ 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & 1 & 0 & 1 \\end{bmatrix}$",
+        "b": "$H = \\begin{bmatrix} 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & 1 & 0 & 1 \\\\ 1 & 0 & 1 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 1 & 1 \\end{bmatrix}$",
+        "c": "$H = \\begin{bmatrix} 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 & 1 & 1 \\\\ 0 & 0 & 1 & 1 & 0 & 1 \\end{bmatrix}$",
+        "d": "$H = \\begin{bmatrix} 1 & 0 & 1 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 1 & 1 \\\\ 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 0 & 1 & 1 & 1 & 0 \\end{bmatrix}$"
+      },
+      "explanations": {
+        "a": " This matrix does not correctly correspond to the given Tanner graph.",
+        "b": " This matrix does not correspond to the correct graph structure.",
+        "c": " This matrix corresponds to the given Tanner graph.",
+        "d": " This matrix does not match the Tanner graph structure."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
     }
   ]
 }

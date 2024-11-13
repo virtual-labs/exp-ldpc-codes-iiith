@@ -4,6 +4,7 @@
 
 Recall that a linear code ${\cal C}$ can be described as the set of all vectors which are orthogonal to its parity check matrix $H$, i.e., ${\cal C}=\{\boldsymbol{c}\in {\mathbb F}_2^n: H\boldsymbol{c}^T={\boldsymbol 0}\}$. 
 
+A matrix is said to be sparse when the number of ones is smaller than the number of zeros in the matrix.
 A ***Low-Density Parity Check (LDPC) code*** is one  which has a very sparse parity check matrix, i.e., in which the number of ones is much smaller than the number of zeros. For example, consider the matrix $H$,
 
 $$
@@ -39,9 +40,7 @@ A graph is a collection of ***vertices*** (drawn as points on a plane, typically
 
 The figure below shows the Tanner graph of the matrix $H$ given in the example above. 
 
----
-NEED NICELY DRAWN FIGURE OF TANNER GRAPH OF ABOVE MATRIX. 
----
+<img src="images/Theory_TannerGraph.svg" alt="Tanner Graph">
 
 Observe that the degree of each variable node, which is the number of check nodes with which it has an edge, represents the number of parity check equations in which the corresponding coordinate participates in. For instance, the coordinate $c_2$ participates in two check equations in the given example. So, the degree of variable node $c_2$ is precisely two in the graph. Similarly, the degree of each check node is the number of coordinates that participate in the specific parity check equation. For instance, the first check node has degree $3$, as the first parity check equation involves three variables. 
 
