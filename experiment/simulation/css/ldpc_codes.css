@@ -1,1 +1,12 @@
-/* You CSS goes in here */
+.centbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.centdiv {
+    padding: 20px;
+    text-align: center;
+}
