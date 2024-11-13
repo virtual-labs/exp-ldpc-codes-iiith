@@ -58,15 +58,15 @@ const verticalOffset = 50;
 
 // Define variable nodes (bits) and check nodes (parity checks)
 const bitNodes = H[0].map((_, j) => ({
-    id: "bit" + j,
-    type: "bit",
+    id: "x" + j,
+    type: "x",
     x: bitNodeStartX,
     y: j * bitNodeSpacingY + verticalOffset
 }));
 
 const checkNodes = H.map((_, i) => ({
-    id: "check" + i,
-    type: "check",
+    id: "z" + i,
+    type: "z",
     x: checkNodeStartX,
     y: i * checkNodeSpacingY + verticalOffset
 }));
@@ -79,7 +79,7 @@ const links = [];
 H.forEach((row, i) => {
     row.forEach((val, j) => {
         if (val === 1) {
-            links.push({ source: "bit" + j, target: "check" + i });
+            links.push({ source: "x" + j, target: "z" + i });
         }
     });
 });
@@ -100,7 +100,7 @@ const node = svg.append("g")
     .data(nodes)
     .enter().append("circle")
     .attr("r", nodeRadius)
-    .attr("fill", d => d.type === "bit" ? "blue" : "green")
+    .attr("fill", d => d.type === "x" ? "blue" : "green")
     .attr("cx", d => d.x)
     .attr("cy", d => d.y)
     .call(d3.drag()
@@ -115,7 +115,7 @@ const labels = svg.append("g")
     .selectAll("text")
     .data(nodes)
     .enter().append("text")
-    .attr("x", d => d.type === "bit" ? d.x - nodeRadius - bitXShiftLabel : d.x + nodeRadius + checkXShiftLabel) // Shift labels based on node type
+    .attr("x", d => d.type === "x" ? d.x - nodeRadius - bitXShiftLabel : d.x + nodeRadius + checkXShiftLabel) // Shift labels based on node type
     .attr("y", d => d.y + yLabelShift)
     .text(d => d.id);
 
@@ -146,7 +146,7 @@ function dragged(event, d) {
 
     // Update labels positions
     labels.filter(l => l.id === d.id)
-        .attr("x", d.type === "bit" ? d.x - nodeRadius - bitXShiftLabel : d.x + nodeRadius + checkXShiftLabel)
+        .attr("x", d.type === "x" ? d.x - nodeRadius - bitXShiftLabel : d.x + nodeRadius + checkXShiftLabel)
         .attr("y", d.y + yLabelShift);
 
     // Update the links connected to this node
