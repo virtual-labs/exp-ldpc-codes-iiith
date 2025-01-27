@@ -1,6 +1,4 @@
-# Theory
-
-## LDPC Codes
+### LDPC Codes
 
 Recall that a linear code ${\cal C}$ can be described as the set of all vectors which are orthogonal to its parity check matrix $H$, i.e., ${\cal C}=\{\boldsymbol{c}\in {\mathbb F}_2^n: H\boldsymbol{c}^T={\boldsymbol 0}\}$. 
 
@@ -24,7 +22,7 @@ In a more general sense than the example above, the sparse $H$ matrix of an LDPC
 LDPC codes are one of the most widely used codes in practice. Most practical LDPC codes have blocklengths 5000 and above, where each row could have only a few entries which are $1$. Carefully designed LDPC codes have extremely good performance (very low probability of error, and operational rates close to the channel capacity, which is the maximum rate at which a channel with certain noise level can operate) as well as reasonable (though not small) encoding and decoding complexity, which explains their widespread adoption in applications. 
 
 
-### Regular and Irregular LDPC codes
+#### Regular and Irregular LDPC codes
 
 An LDPC code is called a ***Regular LDPC*** code if the number of 1s in each row of the sparse $H$ matrix is identical (say, equal to $w_r$) and the number of 1s in each column of $H$ is also identical (say, equal to $w_c$). Since the number of rows is $n-k$ and the number of columns is $n$, it should therefore be true that $nw_c=(n-k)w_r$. The ***design rate*** of such a regular LDPC code is defined as $1-\frac{n-k}{n}=1-\frac{w_c}{w_r}$. Note that this corresponds to the actual rate of the code, provided the rows of the $H$ matrix are linearly independent, which is our assumption here. 
 
@@ -32,7 +30,7 @@ A LDPC code is called an ***irregular LDPC code*** if the number of $1$s in the 
 
 In practice, regular LDPC codes are easier to analyze theoretically, but carefully designed irregular LDPC codes generally have better performance than regular LDPC codes. 
 
-### Tanner graphs of LDPC codes
+#### Tanner graphs of LDPC codes
 
 A graph is a collection of ***vertices*** (drawn as points on a plane, typically) and ***edges*** (drawn as lines or curves between pairs of vertices, typically). A ***bipartite graph*** is a graph whose vertex set can be partitioned into two subsets, such that any edge of the graph exists only between pairs of vertices, exactly one from each subset. Thus, no edge of the bipartite graph exists between pairs of vertices in the same subset of the partition. 
 
