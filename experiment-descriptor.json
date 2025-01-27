@@ -40,7 +40,7 @@
     {
       "target": "ldpc_codes.html",
       "source": "simulation/ldpc_codes.html",
-      "label": "LDPC Codes",
+      "label": "Simulation",
       "unit-type": "task",
       "content-type": "simulation"
     },
