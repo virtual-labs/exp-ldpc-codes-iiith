@@ -10,8 +10,7 @@ The experiment consists of two tasks. The user is recommended to go through thes
 
 <div style="text-align: center;">
     <img src="images/mobile.png" alt="alt text" width="500"/>
-    <img src="images/question.png" alt="alt text" width="500"/>
-    <img src="images/obs.png" alt="alt text" width="500"/>
+    <img src="images/task1_options.png" alt="alt text" width="500"/>
 </div>
 
 The experiment window consists of the following components:
@@ -28,31 +27,34 @@ There are two tasks in this experiment.
 
 ### Task 1: Low-Density Parity-Check (LDPC) Codes
 
-1. **Select message**: Select the option corresponding to the correct message(s) passed in this round of peeling decoding
-for the given Tanner graph.
-    <div style="text-align: center;"> <img src="images/options.png" alt="alt text"/> </div>
+1. **Select type**: Choose the type of parity check matrix from the options provided. 
+    <div style="text-align: center;"> <img src="images/task1_options.png" alt="alt text" width="500"/> </div>
 
-2. **Verify the Message**: Verify the correctness of the message(s) passed in this round of peeling decoding. <br>
-    <div style="text-align: center;"> <img src="images/exp1_0_0_yesno.png" alt="alt text" /> </div> <br>
-    - Click on **Submit** to verify the correctness of the message(s) passed in this round of peeling decoding. 
+2. **Verify the type**: Click on "Check" to verify the selected option.<br>
+    <div style="text-align: center;"> <img src="images/check_button.png" alt="alt text" width="200"/> </div> <br>
+    - Click on <strong>Yes</strong> if the given parity check matrix defines an LDPC code, else click on "No". The "Next" button will appear only if the answer is correct.
     - The observation box will display the feedback message accordingly. <br>
       <div style="text-align: center;"> 
-      <img src="images/buttons.png" alt="alt text"/> 
-      <img src="images/exp1_0_0_incorrect.png" alt="alt text"/>
-      <img src="images/exp1_0_0_correct.png" alt="alt text"/>
+      <img src="images/task1_incorrect.png" alt="alt text" width="500"/>
+      <img src="images/task1_correct.png" alt="alt text" width="500"/>
       </div>
 
-3. **Reset**: Click on **Reset** to reset the experiment and start again.
-    <img src="images/exp1_0_0_rate.png" alt="alt text"/><br>
-    - Click on **Reset** to reset the experiment and start again. <br>
+3. **Rate**: Enter the rate of the LDPC code by entering the numerator and denominator of the rate. Click on **Check** to verify the rate. Click on **Previous** to go back to the previous question. You can proceed to next task by clicking on the "Tanner Graph for LDPC Codes" tab.
+    <div style="text-align: center;">  <img src="images/rate_input.png" alt="alt text" width="300"/><br>
+    <img src="images/check_previous_button.png" alt="alt text" width="500"/></div><br>
       
 
 ### Task 2: Tanner Graph for LDPC Codes
 
 1. **Select Parity Check matrix**: Select the option corresponding to the correct Parity Check matrix for the given Tanner graph. <br>
-    <img src="images/exp1_0_1_input.png" alt="alt text"/><br>
+    <div style="text-align: center;"><img src="images/task2_options.png" alt="alt text" width="500"/></div><br>
     - Select the option corresponding to the correct Parity Check matrix for the given Tanner graph. <br>
+    - The observation box will display the feedback message accordingly. <br>
+      <div style="text-align: center;"> 
+      <img src="images/task2_incorrect.png" alt="alt text" width="400"/>
+      <img src="images/task2_correct.png" alt="alt text" width="400"/>
+      </div>
 
 2. **Submit**: Click on **Submit** to verify the correctness of the Parity Check matrix for the given Tanner graph. <br>
-    <img src="images/exp1_0_0_rate.png" alt="alt text"/><br>
-    - Click on **Submit** to verify the correctness of the Parity Check matrix for the given Tanner graph. <br>
+    <div style="text-align: center;"> <img src="images/submit_button.png" alt="alt text" width="200"/></div><br>
+    - Click on <strong>Submit</strong>> to verify the correctness of the Parity Check matrix for the given Tanner graph. <br>
