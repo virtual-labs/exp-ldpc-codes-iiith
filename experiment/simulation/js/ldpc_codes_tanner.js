@@ -332,16 +332,20 @@ function submit() {
     wrongAgainPrompt = "Oops! You've chosen the wrong option again. Please review your choice and try again.";
 
     const form = document.getElementById('form1');
-    const selectedOption = Array.from(form.elements).find(el => el.checked);
+    const selectedOption = Array.from(form.elements).find(el => el.checked)?.id.match(/\d+/)?.[0];
 
-    if (tannerQuestionObservation.innerHTML == incorrectPrompt) {
+    console.log(selectedOption);
+    console.log(correctOption);
+
+    if (selectedOption && Number(selectedOption) === Number(correctOption)) {
+        tannerQuestionObservation.innerHTML = correctPrompt;
+        tannerQuestionObservation.style.color = "green";
+    }
+    else if (tannerQuestionObservation.innerHTML == incorrectPrompt) {
         tannerQuestionObservation.innerHTML = wrongAgainPrompt;
         tannerQuestionObservation.style.color = "red";
     }
-    else if (selectedOption && selectedOption.value === `Matrix Option ${correctOption + 1}`) {
-        tannerQuestionObservation.innerHTML = correctPrompt;
-        tannerQuestionObservation.style.color = "green";
-    } else {
+    else {
         tannerQuestionObservation.innerHTML = incorrectPrompt;
         tannerQuestionObservation.style.color = "red";
     }

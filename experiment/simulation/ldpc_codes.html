@@ -56,16 +56,15 @@
 					<ul style="list-style: disc;">
 						<b>Quick theory overview:</b>
 						<li>
-							<strong>The conditional distribution of AWGN Channel is given by:</strong>
-							<br>
-							<p style="text-align: center;">\( p(\boldsymbol{y}|\boldsymbol{x})=\frac{1}{(\pi
-								N_0)^{n/2}}e^{-\frac{(||\boldsymbol{y}-\boldsymbol{x}||^2)}{N_0}}\)</p>
-
-							<strong> The estimate of the transmitted codeword is given by:</strong>
-							<p style="text-align: center;">\(\hat{\boldsymbol{x}}=arg_{\boldsymbol{x}\in{\cal
-								C}}\max\frac{1}{(\pi
-								N_0)^{n/2}}e^{-\frac{(||\boldsymbol{y}-\boldsymbol{x}||^2)}{N_0}}=arg_{\boldsymbol{x}\in{\cal
-								C}}\max\langle\boldsymbol{y},\boldsymbol{x}\rangle\)</p>
+							<strong>A matrix is said to be sparse when the number of ones is smaller than the number of
+								zeros in the matrix.</strong>
+						</li>
+						<li>
+							<strong>An LDPC code is called a <i>Regular LDPC</i> code if the number of 1s in each row of
+								the sparse \(H\) matrix is identical (say, equal to \(w_r\)) and the number of 1s in
+								each
+								column of \(H\) is also identical (say, equal to \(w_c\))
+							</strong>
 						</li>
 					</ul>
 					<br>
@@ -74,24 +73,20 @@
 						<b>Procedure:</b>
 
 						<li>
-							<strong>Step 1:</strong> Enter the likelihoods of \(\boldsymbol{y}\) given codewords and
-							click on the
-							"Check" button to verify the likelihoods.
+							<strong>Step 1:</strong> Choose the type of parity check matrix from the options provided.
 						</li>
 						<li>
-							<strong>Step 2:</strong> Select the maximum likelihood estimate codeword from the
-							dropdown.
+							<strong>Step 2:</strong> Click on "Check" to verify the selected option.
 						</li>
 						<li>
-							<strong>Step 3:</strong> Click on "Yes" if the maximum likelihood estimate codeword is same
-							as the transmitted codeword, else click on "No". "Next" button will appear after selecting
-							the correct option.
+							<strong>Step 3:</strong> Click on "Yes" if the given parity check matrix defines a LDPC
+							code, else click on "No". The "Next" button will appear only if the answer is correct.
 						<li>
 							<strong>Step 4:</strong> After clicking on the "Next" button, the next question will appear.
-							Select all the received vectors that lead to a decoding error when using maximum likelihood
-							decoding.
+							Enter the rate of the LDPC code by entering the numerator and denominator of the rate. Click
+							on "Check" to verify the rate. Click on "Previous" to go back to the previous question. You
+							can proceed to next task by clicking on the "Tanner Graph for LDPC Codes" tab.
 						</li>
-
 
 					</ul>
 				</div>
@@ -103,7 +98,7 @@
 	<div class="columns is-centered">
 		<div class="column is-11-desktop is-12-tablet is-12-mobile">
 			<div class="v-datalist-container components-list" id="questionStatement">
-				<p id="ldpcquestion"> Consider the given parity check catrix : \(H\) = </p>
+				<p id="ldpcquestion"> Consider the given parity check matrix : \(H\) = </p>
 				<div id="pcmatrix">
 					Parity check matrix goes here.
 				</div>
@@ -117,14 +112,21 @@
 			<div class="box-question">
 
 				<section id="ldpcq1" style="display:block ;">
-					<p style="margin-bottom: 20px;"> Check if the parity check matrix is <b><i>non-sparse</i></b>, a <b><i>sparse but irregular</i></b> or a <b><i>sparse but regular</i></b> matrix and check one of the options below.</p>
+					<p style="margin-bottom: 20px;"> Check if the parity check matrix is <b><i>non-sparse</i></b>, a
+						<b><i>sparse but irregular</i></b> or a <b><i>sparse but regular</i></b> matrix and check one of
+						the options below.
+					</p>
 
 					<div style="margin-bottom: 20px; vertical-align: middle;">
-						<label for="answera"><input type="checkbox" id="answera" name="answer" value="" required><b><i>non-sparse matrix</i></b></label><br>
-						<label for="answerb"><input type="checkbox" id="answerb" name="answer" value="" required><b><i>sparse but irregular matrix</i></b></label><br>
-						<label for="answerc"><input type="checkbox" id="answerc" name="answer" value="" required><b><i>sparse but regular matrix</i></b></label><br>
+						<label for="answera"><input type="checkbox" id="answera" name="answer" value=""
+								required><b><i>non-sparse matrix</i></b></label><br>
+						<label for="answerb"><input type="checkbox" id="answerb" name="answer" value=""
+								required><b><i>sparse but irregular matrix</i></b></label><br>
+						<label for="answerc"><input type="checkbox" id="answerc" name="answer" value=""
+								required><b><i>sparse but regular matrix</i></b></label><br>
 
-						<button style="margin-top: 20px;" class="v-button" role="button" onclick="matrixcheck()">Check</button>
+						<button style="margin-top: 20px;" class="v-button" role="button"
+							onclick="matrixcheck()">Check</button>
 					</div>
 					<div id="isldpccode">
 						<p> Does the above parity check matrix define a LDPC code?</p>
@@ -133,21 +135,26 @@
 						<button class="v-button" role="button" onclick="isLDPCcode(0)">No</button>
 						<div class="centbox">
 							<div class="centdiv">
-								<button id="nextButton" class="v-button" role="button" style="display: none;" onclick="nextLDPCquestion()">Next</button>
+								<button id="nextButton" class="v-button" role="button" style="display: none;"
+									onclick="nextLDPCquestion()">Next</button>
 							</div>
 						</div>
-						
+
 					</div>
 				</section>
 
 				<section id="rateques" style="display:none ;">
-					Calculate the rate of the above parity check matrix of a LDPC code.
+					Calculate the rate of the above parity check matrix of a LDPC code. Enter the numerator and
+					denominator of the rate as a simplified fraction.
 					<div class="rate-input">
-						<b><i>Rate</i></b> = 
-						<div class="fraction" style="display: inline-block; text-align: center; vertical-align: middle;">
-							<input type="number" id="numerator" style="display: block; width: 75px; text-align: center; margin: 2px auto;" />
+						<b><i>Rate</i></b> =
+						<div class="fraction"
+							style="display: inline-block; text-align: center; vertical-align: middle;">
+							<input type="number" id="numerator"
+								style="display: block; width: 75px; text-align: center; margin: 2px auto;" />
 							<div class="denom" style="border-top: 3px solid black;">
-								<input type="number" id="denominator" style="display: block; width: 75px; text-align: center; margin: 2px auto;"/>
+								<input type="number" id="denominator"
+									style="display: block; width: 75px; text-align: center; margin: 2px auto;" />
 							</div>
 						</div>
 					</div>
