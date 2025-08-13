@@ -2,7 +2,7 @@ The experiment consists of two tasks. The user is recommended to go through thes
 
 1. Low-Density Parity-Check (LDPC) Codes
     * Given a Parity Check Matrix, learn how to identify the type of LDPC code and its rate.
-1. Tanner Graph for LDPC Codes
+2. Tanner Graph for LDPC Codes
     * For given Tanner graph, learn how to identify corresponding Parity Check Matrix.
 
 
