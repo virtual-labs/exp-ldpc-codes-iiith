@@ -10,10 +10,10 @@
         "d": "$\\textbf{ rate } = \\frac{1}{2}$ and $\\textbf{ design rate } = \\frac{1}{6}$"
       },
       "explanations": {
-        "a": " The code rate is correct, but the design rate should be calculated by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$.",
-        "b": " The design rate is correct, but the code rate is incorrect. The code rate is calculated by $\\frac{\\text{ rank of }H}{n}$",
-        "c": " Both the rate and design rate are incorrect. The rate is calculate by $\\frac{\\text{ rank of } H}{n}$, and the design rate should be calculated by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$.",
-        "d": " This is the correct answer. The code rate is $\\frac{\\text{ rank of }H}{n}$, and the design rate is calculate by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$."
+        "a": " Incorrect. The code rate is correct, but the design rate should be calculated by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$.",
+        "b": " Incorrect. The design rate is correct, but the code rate is incorrect. The code rate is calculated by $\\frac{\\text{ rank of }H}{n}$",
+        "c": " Incorrect. Both the rate and design rate are incorrect. The rate is calculate by $\\frac{\\text{ rank of } H}{n}$, and the design rate should be calculated by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$.",
+        "d": " Correct. The code rate is $\\frac{\\text{ rank of }H}{n}$, and the design rate is calculate by $\\frac{\\text{ number of rows of } H}{\\text{ number of columns of } H}$."
       },
       "correctAnswer": "d",
       "difficulty": "intermediate"
@@ -27,10 +27,10 @@
         "d": "$H = \\begin{bmatrix} 1 & 0 & 1 & 1 & 0 & 1 \\\\ 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 1 & 1 & 0 & 0 & 1 \\end{bmatrix}$"
       },
       "explanations": {
-        "a": " This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here.",
-        "b": " This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here.",
-        "c": " Correct option. This parity-check matrix does satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is the case here.",
-        "d": " This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here."
+        "a": " Incorrect. This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here.",
+        "b": " Incorrect. This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here.",
+        "c": " Correct. This parity-check matrix does satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is the case here.",
+        "d": " Incorrect. This parity-check matrix does not satisfy the regular LDPC structure. In a regular LDPC code, each row and each column must have the same number of 1s. This ensures uniform weight across rows and columns, which is not the case here."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -44,10 +44,10 @@
         "d": "It contains an even number of vertices."
       },
       "explanations": {
-        "a": " A bipartite graph cannot have odd cycles.",
-        "b": " This is the defining characteristic of a bipartite graph.",
-        "c": " This is not true; edges in bipartite graphs connect vertices from different sets.",
-        "d": " The number of vertices is not necessarily even in bipartite graphs."
+        "a": " Incorrect. A bipartite graph cannot have odd cycles.",
+        "b": " Correct. This is the defining characteristic of a bipartite graph.",
+        "c": " Incorrect. This is not true; edges in bipartite graphs connect vertices from different sets.",
+        "d": " Incorrect. The number of vertices is not necessarily even in bipartite graphs."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -61,14 +61,14 @@
         "d": "An irregular LDPC code with short block lengths."
       },
       "explanations": {
-        "a": " While regular LDPC codes are easier to analyze, they may not perform as well as irregular codes in practice with large block lengths due to optimized connections.",
-        "b": " Correct option. Irregular LDPC codes are known to perform better in practice, wspecially with large block lengths, as their structureallows for optimized variable and check node connections.",
-        "c": " Short block lengths reduce error correction performance in both regular and irregular codes.",
-        "d": " Irregular LDPC codes perform better with larger block lengths, so short block lengths reduce performance."
+        "a": " Incorrect. While regular LDPC codes are easier to analyze, they may not perform as well as irregular codes in practice with large block lengths due to optimized connections.",
+        "b": " Correct. Irregular LDPC codes are known to perform better in practice, wspecially with large block lengths, as their structureallows for optimized variable and check node connections.",
+        "c": " Incorrect. Short block lengths reduce error correction performance in both regular and irregular codes.",
+        "d": " Incorrect. Irregular LDPC codes perform better with larger block lengths, so short block lengths reduce performance."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
-    },            
+    },
     {
       "question": "Choose the correct parity-check matrix that corresponds to the given Tanner graph: <img src=\"./images/exp-3-test.svg\" style=\"width: 250px; height: auto;\">",
       "answers": {
@@ -78,10 +78,10 @@
         "d": "$H = \\begin{bmatrix} 1 & 0 & 1 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 1 & 1 \\\\ 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 0 & 1 & 1 & 1 & 0 \\end{bmatrix}$"
       },
       "explanations": {
-        "a": " This matrix does not correctly correspond to the given Tanner graph.",
-        "b": " This matrix does not correspond to the correct graph structure.",
-        "c": " This matrix corresponds to the given Tanner graph.",
-        "d": " This matrix does not match the Tanner graph structure."
+        "a": " Incorrect. This matrix does not correctly correspond to the given Tanner graph.",
+        "b": " Incorrect. This matrix does not correspond to the correct graph structure.",
+        "c": " Correct. This matrix corresponds to the given Tanner graph.",
+        "d": " Incorrect. This matrix does not match the Tanner graph structure."
       },
       "correctAnswer": "c",
       "difficulty": "intermediate"
