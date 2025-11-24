@@ -10,10 +10,10 @@
         "d": "Transmission channel"
       },
       "explanations": {
-        "a": " The Tanner graph does not represent the codeword structure directly. It represents the connections between variable nodes and check nodes from the parity-check matrix.",
+        "a": " Incorrect. The Tanner graph does not represent the codeword structure directly. It represents the connections between variable nodes and check nodes from the parity-check matrix.",
         "b": " Correct! The Tanner graph visually represents the parity-check matrix by showing the relationships (or connection) between check nodes and variable nodes.",
-        "c": " The Tanner graph does not represent the generator matrix but the parity-check matrix.",
-        "d": " The Tanner graph has nothing to do with the transmission channel."
+        "c": " Incorrect. The Tanner graph does not represent the generator matrix but the parity-check matrix.",
+        "d": " Incorrect. The Tanner graph has nothing to do with the transmission channel."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -27,10 +27,10 @@
         "d": " The number of columns in the matrix."
       },
       "explanations": {
-        "a": " The number of rows in the matrix is not related to the column weight.",
+        "a": " Incorrect. The number of rows in the matrix is not related to the column weight.",
         "b": " Correct! The column weight refers to the number of ones in each column, indicating how many check nodes a variable node is connected to.",
-        "c": " This describes the row weight, not the column weight.",
-        "d": " This refers to the size of the codewords of the given code, not the column weight."
+        "c": " Incorrect. This describes the row weight, not the column weight.",
+        "d": " Incorrect. This refers to the size of the codewords of the given code, not the column weight."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -44,10 +44,10 @@
         "d": "Error correction bits"
       },
       "explanations": {
-        "a": " Parity check equations are represented by check nodes, not variable nodes.",
+        "a": " Incorrect. Parity check equations are represented by check nodes, not variable nodes.",
         "b": " Correct! Variable nodes represent the codeword coordinates (or the variables being solved for) in a Tanner graph.",
-        "c": " The rows of the parity-check matrix $H$ correspond to the check nodes, not variable nodes.",
-        "d": " Variable nodes represent the codeword bits, not error correction bits."
+        "c": " Incorrect. The rows of the parity-check matrix $H$ correspond to the check nodes, not variable nodes.",
+        "d": " Incorrect. Variable nodes represent the codeword bits, not error correction bits."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -61,10 +61,10 @@
         "d": "20"
       },
       "explanations": {
-        "a": " The matrix $H$ has 9 non-zero elements, meaning 9 edges are required to represent the connections in the Tanner graph. 4 edges would not be enough.",
-        "b": " Although 8 is closer to the correct count, the number of non-zero elements (representing edges) is 9, not 8.",
-        "c": " The Tanner graph will have 9 edges, corresponding to the 9 non-zero elements in the parity-check matrix $H$.",
-        "d": " More than 18 edges would be too many for this parity-check matrix."
+        "a": " Incorrect. The matrix $H$ has 9 non-zero elements, meaning 9 edges are required to represent the connections in the Tanner graph. 4 edges would not be enough.",
+        "b": " Incorrect. Although 8 is closer to the correct count, the number of non-zero elements (representing edges) is 9, not 8.",
+        "c": " Correct! The Tanner graph will have 9 edges, corresponding to the 9 non-zero elements in the parity-check matrix $H$.",
+        "d": " Incorrect. More than 18 edges would be too many for this parity-check matrix."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -79,9 +79,9 @@
       },
       "explanations": {
         "a": " Correct! In a regular LDPC code, all rows have the same number of 1s (row weight) and all columns have the same number of 1s (column weight).",
-        "b": " Full rank is not a defining property of a regular LDPC code, though it may be an additional feature.",
-        "c": " While LDPC codes have fixed block lengths, this does not define regularity.",
-        "d": " All entries being 0 or 1 is a characteristic of any binary matrix, not specific to regular LDPC codes."
+        "b": " Incorrect. Full rank is not a defining property of a regular LDPC code, though it may be an additional feature.",
+        "c": " Incorrect. While LDPC codes have fixed block lengths, this does not define regularity.",
+        "d": " Incorrect. All entries being 0 or 1 is a characteristic of any binary matrix, not specific to regular LDPC codes."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -95,8 +95,8 @@
         "d": "Tanner graphs are irrelevant to LDPC codes."
       },
       "explanations": {
-        "a": " A Tanner graph is a bipartite graph, not unipartite.",
-        "b": " Tanner graphs do have variable nodes, which represent the codeword bits.",
+        "a": " Incorrect. A Tanner graph is a bipartite graph, not unipartite.",
+        "b": " Incorrect. Tanner graphs do have variable nodes, which represent the codeword bits.",
         "c": " Correct! A Tanner graph is a bipartite graph, showing the relationship between variable nodes and check nodes.",
         "d": " Tanner graphs are highly relevant in representing the parity-check matrix of LDPC codes."
       },
