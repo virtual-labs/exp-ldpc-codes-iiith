@@ -87,7 +87,9 @@
 							on "Check" to verify the rate. Click on "Previous" to go back to the previous question. You
 							can proceed to next task by clicking on the "Tanner Graph for LDPC Codes" tab.
 						</li>
-
+						<li>
+							<strong>Step 5:</strong> Click on "New Question" to get a new parity check matrix question.
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -133,13 +135,11 @@
 						<br>
 						<button class="v-button" role="button" onclick="isLDPCcode(1)">Yes</button>
 						<button class="v-button" role="button" onclick="isLDPCcode(0)">No</button>
-						<div class="centbox">
-							<div class="centdiv">
-								<button id="nextButton" class="v-button" role="button" style="display: none;"
-									onclick="nextLDPCquestion()">Next</button>
-							</div>
+						<div class="centbox" style="display: flex; justify-content: center; gap: 10px;">
+							<button id="nextButton" class="v-button" role="button" style="display: none;"
+								onclick="nextLDPCquestion()">Next</button>
+							<button id="newQuestionButton" class="v-button" role="button">New Question</button>
 						</div>
-
 					</div>
 				</section>
 

@@ -154,6 +154,21 @@ function updateMatrix(){
     MathJax.typesetPromise();
 }
 
+function generateNewQuestion() {
+    let newMatrix, newCode;
+    do {
+        [newMatrix, newCode] = chooserandommatrix(); // Generate a new random matrix
+    } while (JSON.stringify(newMatrix) === JSON.stringify(spmatrix)); // Ensure it's different from the current one
+
+    spmatrix = newMatrix;
+    code = newCode;
+    updateMatrix(); // Update the displayed matrix
+
+    // Clear observations
+    document.getElementById('observationsa').innerHTML = '';
+    document.getElementById('observationsb').innerHTML = '';
+}
+
 window.onload = function(){
     const paritycheckmatrix = document.getElementById("pcmatrix");
     const latex = matrixToLatex(spmatrix);
@@ -161,6 +176,9 @@ window.onload = function(){
     paritycheckmatrix.innerHTML = `\\[ ${latex} \\]`;
 
     MathJax.typesetPromise();
+
+    // Add event listener for the new question button
+    document.getElementById('newQuestionButton').addEventListener('click', generateNewQuestion);
 }
 
 function matrixcheck(){

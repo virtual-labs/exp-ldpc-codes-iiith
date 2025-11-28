@@ -351,3 +351,7 @@ function submit() {
     }
 
 }
+
+function newQuestion() {
+    location.reload();
+}
