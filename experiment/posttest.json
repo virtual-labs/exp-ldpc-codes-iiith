@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Let $\\mathcal{C}$ be a regular LDPC code with a $5$-by-$6$ parity-check matrix $H$ of rank $3$. Select the correct pair for the $\\textbf{ rate }$ and $\\textbf{ design rate }$ of the code.",
+      "question": "1. Let $\\mathcal{C}$ be a regular LDPC code with a $5$-by-$6$ parity-check matrix $H$ of rank $3$. Select the correct pair for the $\\textbf{ rate }$ and $\\textbf{ design rate }$ of the code.",
       "answers": {
         "a": "$\\textbf{ rate } = \\frac{1}{2}$ and $\\textbf{ design rate } = \\frac{1}{2}$",
         "b": "$\\textbf{ rate } = \\frac{1}{6}$ and $\\textbf{ design rate } = \\frac{1}{6}$",
@@ -19,7 +19,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "Select the correct parity-check matrix $H$ for a $\\textit{ regular }$ LDPC code with block length $n = 6$ and check nodes $n-k = 3$.",
+      "question": "2. Select the correct parity-check matrix $H$ for a $\\textit{ regular }$ LDPC code with block length $n = 6$ and check nodes $n-k = 3$.",
       "answers": {
         "a": "$H = \\begin{bmatrix} 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 1 & 0 & 1 & 0 & 0 & 1 \\end{bmatrix}$",
         "b": "$H = \\begin{bmatrix} 1 & 0 & 1 & 0 & 1 & 1 \\\\ 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 1 & 0 & 1 \\end{bmatrix}$",
@@ -36,7 +36,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Which of the following is a characteristic property of a bipartite graph?",
+      "question": "3. Which of the following is a characteristic property of a bipartite graph?",
       "answers": {
         "a": "It contains at least one odd cycle.",
         "b": "All vertices can be divided into two sets such that no two vertices within the same set are adjacent.",
@@ -53,7 +53,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Which of the following LDPC codes is expected to perform better in practice, particularly in terms of error correction capability, given sufficient large block length?",
+      "question": "4. Which of the following LDPC codes is expected to perform better in practice, particularly in terms of error correction capability, given sufficient large block length?",
       "answers": {
         "a": "A regular LDPC code with large block lengths.",
         "b": "An irregular LDPC code with large block lengths.",
@@ -70,7 +70,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Choose the correct parity-check matrix that corresponds to the given Tanner graph: <img src=\"./images/exp-3-test.svg\" style=\"width: 250px; height: auto;\">",
+      "question": "5. Choose the correct parity-check matrix that corresponds to the given Tanner graph: <img src=\"./images/exp-3-test.svg\" style=\"width: 250px; height: auto;\">",
       "answers": {
         "a": "$H = \\begin{bmatrix} 1 & 0 & 1 & 0 & 1 & 0 \\\\ 0 & 1 & 0 & 1 & 0 & 1 \\\\ 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & 1 & 0 & 1 \\end{bmatrix}$",
         "b": "$H = \\begin{bmatrix} 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & 1 & 0 & 1 \\\\ 1 & 0 & 1 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 1 & 1 \\end{bmatrix}$",
