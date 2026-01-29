@@ -36,9 +36,10 @@ A graph is a collection of ***vertices*** (drawn as points on a plane, typically
 
  Any $H$ matrix can be represented using a bipartite graph, called a **Tanner graph**, as follows. Corresponding to the $n$ coordinates in the codeword, we construct $n$ vertices $\{c_1,...,c_n\}$. We call these vertices as the ***variable nodes*** of the Tanner graph. Corresponding to the $n-k$ rows (each one representing one parity equation or parity check equation), we construct $n-k$ ***check nodes***, denoted as $\{z_1,z_2,..,z_{n-k}\}$. A variable node $c_i$ is connected to a check node $z_j$, if and only if the $(j,i)^{th}$ entry of the $H$ matrix is $1$. In other words, if $\{c_i,z_j\}$ is an edge of the Tanner graph, then the $i^{th}$ coordinate $c_i$ participates in the $j^{th}$ parity check equation. 
 
-The figure below shows the Tanner graph of the matrix $H$ given in the example above. 
-
-<img src="images/Theory_TannerGraph.svg" alt="Tanner Graph">
+<figure  style="text-align: center;">
+    <img src="images/Theory_TannerGraph.svg" alt="Tanner Graph">
+    <figcaption>Fig 1. This is the tanner graph of the matrix $H$ given in the example above.</figcaption>
+</figure>
 
 Observe that the degree of each variable node, which is the number of check nodes with which it has an edge, represents the number of parity check equations in which the corresponding coordinate participates in. For instance, the coordinate $c_2$ participates in two check equations in the given example. So, the degree of variable node $c_2$ is precisely two in the graph. Similarly, the degree of each check node is the number of coordinates that participate in the specific parity check equation. For instance, the first check node has degree $3$, as the first parity check equation involves three variables. 
 
