@@ -2,7 +2,7 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "In an LDPC code, the Tanner graph is used to represent which of the following?",
+      "question": "1. In an LDPC code, the Tanner graph is used to represent which of the following?",
       "answers": {
         "a": "Codeword structure",
         "b": "Parity-check matrix",
@@ -19,7 +19,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "The column weight of an LDPC code's parity-check matrix refers to:",
+      "question": "2. The column weight of an LDPC code's parity-check matrix refers to:",
       "answers": {
         "a": " The number of rows in the matrix.",
         "b": " The number of ones in each column.",
@@ -36,7 +36,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "In a Tanner graph of an LDPC code, what do the variable nodes represent?",
+      "question": "3. In a Tanner graph of an LDPC code, what do the variable nodes represent?",
       "answers": {
         "a": "Parity check equations",
         "b": "Codeword coordinate",
@@ -53,7 +53,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "How many edges would the Tanner graph corresponding to the matrix $H = \\begin{bmatrix} 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 1 & 0 & 1 & 0 & 0 & 1 \\end{bmatrix}$ contain?",
+      "question": "4. How many edges would the Tanner graph corresponding to the matrix $H = \\begin{bmatrix} 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 1 & 0 & 1 & 0 & 0 & 1 \\end{bmatrix}$ contain?",
       "answers": {
         "a": "4",
         "b": "8",
@@ -70,7 +70,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Which of the following best describes the meaning of a $\\textit{regular}$ LDPC code?",
+      "question": "5. Which of the following best describes the meaning of a $\\textit{regular}$ LDPC code?",
       "answers": {
         "a": "All rows have the same weight, and all columns have the same weight.",
         "b": "The parity check matrix has full rank.",
@@ -87,7 +87,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "Which of the following statements about Tanner graphs is correct?",
+      "question": "6. Which of the following statements about Tanner graphs is correct?",
       "answers": {
         "a": "A Tanner graph is a unipartite graph.",
         "b": "A Tanner graph has no variable nodes.",
