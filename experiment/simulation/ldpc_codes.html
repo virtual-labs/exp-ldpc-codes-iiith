@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Low Density Parity Check Codes
+	</title>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+	<link rel="stylesheet" href="./css/main.css">
+	<link rel="stylesheet" href="./css/ldpc_codes.css">
+
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<!-- Load d3.js -->
+	<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+
+<body>
+
+	<div class="container" style="margin-top:1%;"></div>
+
+	<div class="columns is-centered">
+		<div class="column is-one-quarter v-instruction-title">
+			Channel
+		</div>
+		<div class="column">
+			<div class="v-tabs">
+				<ul class="taskbar-tabs">
+					<li class="is-active" id="Task1">
+						<a>
+							Low Density Parity Check Codes
+						</a>
+					</li>
+
+					<li id="Task2" onclick="window.location.href = 'ldpc_codes_tanner.html';">
+						<a>
+							Tanner Graph for LDPC Codes
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="columns is-centered">
+		<div class="column is-11-desktop is-12-tablet is-12-mobile">
+			<div class="v-collapsible-instruction-container v-instruction-container">
+				<div class="v-collapsible is-size-5">Instructions</div>
+				<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+					<ul style="list-style: disc;">
+						<b>Quick theory overview:</b>
+						<li>
+							<strong>A matrix is said to be sparse when the number of ones is smaller than the number of
+								zeros in the matrix.</strong>
+						</li>
+						<li>
+							<strong>An LDPC code is called a <i>Regular LDPC</i> code if the number of 1s in each row of
+								the sparse \(H\) matrix is identical (say, equal to \(w_r\)) and the number of 1s in
+								each
+								column of \(H\) is also identical (say, equal to \(w_c\))
+							</strong>
+						</li>
+					</ul>
+					<br>
+					<ul style="list-style: disc;">
+
+						<b>Procedure:</b>
+
+						<li>
+							<strong>Step 1:</strong> Choose the type of parity check matrix from the options provided.
+						</li>
+						<li>
+							<strong>Step 2:</strong> Click on "Check" to verify the selected option.
+						</li>
+						<li>
+							<strong>Step 3:</strong> Click on "Yes" if the given parity check matrix defines an LDPC
+							code, else click on "No". The "Next" button will appear only if the answer is correct.
+						<li>
+							<strong>Step 4:</strong> After clicking on the "Next" button, the next question will appear.
+							Enter the rate of the LDPC code by entering the numerator and denominator of the rate. Click
+							on "Check" to verify the rate. Click on "Previous" to go back to the previous question. You
+							can proceed to next task by clicking on the "Tanner Graph for LDPC Codes" tab.
+						</li>
+						<li>
+							<strong>Step 5:</strong> Click on "New Question" to get a new parity check matrix question.
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+
+	<div class="columns is-centered">
+		<div class="column is-11-desktop is-12-tablet is-12-mobile">
+			<div class="v-datalist-container components-list" id="questionStatement">
+				<p id="ldpcquestion"> Consider the given parity check matrix : \(H\) = </p>
+				<div id="pcmatrix">
+					Parity check matrix goes here.
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+		style="margin-top:-1.5%">
+		<div class="column is-8-desktop is-12-tablet is-12-mobile">
+			<div class="box-question">
+
+				<section id="ldpcq1" style="display:block ;">
+					<p style="margin-bottom: 20px;"> Check if the parity check matrix is <b><i>non-sparse</i></b>, a
+						<b><i>sparse but irregular</i></b> or a <b><i>sparse but regular</i></b> matrix and check one of
+						the options below.
+					</p>
+
+					<div style="margin-bottom: 20px; vertical-align: middle;">
+						<label for="answera"><input type="checkbox" id="answera" name="answer" value=""
+								required><b><i>non-sparse matrix</i></b></label><br>
+						<label for="answerb"><input type="checkbox" id="answerb" name="answer" value=""
+								required><b><i>sparse but irregular matrix</i></b></label><br>
+						<label for="answerc"><input type="checkbox" id="answerc" name="answer" value=""
+								required><b><i>sparse but regular matrix</i></b></label><br>
+
+						<button style="margin-top: 20px;" class="v-button" role="button"
+							onclick="matrixcheck()">Check</button>
+					</div>
+					<div id="isldpccode">
+						<p> Does the above parity check matrix define a LDPC code?</p>
+						<br>
+						<button class="v-button" role="button" onclick="isLDPCcode(1)">Yes</button>
+						<button class="v-button" role="button" onclick="isLDPCcode(0)">No</button>
+						<div class="centbox" style="display: flex; justify-content: center; gap: 10px;">
+							<button id="nextButton" class="v-button" role="button" style="display: none;"
+								onclick="nextLDPCquestion()">Next</button>
+							<button id="newQuestionButton" class="v-button" role="button" style="margin-top: 10px;">New Question</button>
+						</div>
+					</div>
+				</section>
+
+				<section id="rateques" style="display:none ;">
+					Calculate the rate of the above parity check matrix of a LDPC code. Enter the numerator and
+					denominator of the rate as a simplified fraction.
+					<div class="rate-input">
+						<b><i>Rate</i></b> =
+						<div class="fraction"
+							style="display: inline-block; text-align: center; vertical-align: middle;">
+							<input type="number" id="numerator"
+								style="display: block; width: 75px; text-align: center; margin: 2px auto;" />
+							<div class="denom" style="border-top: 3px solid black;">
+								<input type="number" id="denominator"
+									style="display: block; width: 75px; text-align: center; margin: 2px auto;" />
+							</div>
+						</div>
+					</div>
+					<p id="receivedVectors"></p>
+					<br>
+					<button class="v-button" role="button" onclick="checkRatequestion()">Check</button>
+					<button class="v-button" role="button" onclick="prevLDPCquestion()">Previous</button>
+				</section>
+			</div>
+		</div>
+
+		<div class="column is-3-desktop is-4-tablet is-12-mobile">
+			<div class="v-datalist-container components-list">
+				<div class="v-datalist-title">Observations</div>
+				<div id="observationsa">
+				</div>
+				<div id="observationsb">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+	<script src="./js/ldpc_codes.js"></script>
+</body>
+
+</html>
