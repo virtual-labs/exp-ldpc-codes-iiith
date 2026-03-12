@@ -2,105 +2,88 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "1. In an LDPC code, the Tanner graph is used to represent which of the following?",
+      "question": "1. Consider the parity-check matrix $H = \\begin{bmatrix} 1 & 1 & 0 & 1 \\\\ 0 & 1 & 1 & 1 \\\\ 1 & 0 & 1 & 0 \\end{bmatrix}$ over $GF(2)$. What is the rank of this matrix?",
       "answers": {
-        "a": "Codeword structure",
-        "b": "Parity-check matrix",
-        "c": "Generator matrix",
-        "d": "Transmission channel"
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4"
       },
       "explanations": {
-        "a": " Incorrect. The Tanner graph does not represent the codeword structure directly. It represents the connections between variable nodes and check nodes from the parity-check matrix.",
-        "b": " Correct! The Tanner graph visually represents the parity-check matrix by showing the relationships (or connection) between check nodes and variable nodes.",
-        "c": " Incorrect. The Tanner graph does not represent the generator matrix but the parity-check matrix.",
-        "d": " Incorrect. The Tanner graph has nothing to do with the transmission channel."
+        "a": "Incorrect. There are more than one linearly independent rows.",
+        "b": "Correct! Observe that adding Row 1 and Row 2 gives $[1, 0, 1, 0]$, which is Row 3. Thus, only two rows are linearly independent.",
+        "c": "Incorrect. Row 3 is a linear combination (XOR sum) of Rows 1 and 2, so the rank is 2, not 3.",
+        "d": "Incorrect. The rank cannot exceed the number of rows (3)."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "2. The column weight of an LDPC code's parity-check matrix refers to:",
+      "question": "2. For the parity-check matrix $H = \\begin{bmatrix} 1 & 0 & 1 & 1 & 0 \\\\ 0 & 1 & 0 & 1 & 1 \\end{bmatrix}$, which equation represents the first parity check?",
       "answers": {
-        "a": " The number of rows in the matrix.",
-        "b": " The number of ones in each column.",
-        "c": " The number of variable nodes connected to each check node.",
-        "d": " The number of columns in the matrix."
+        "a": "$c_1 + c_3 + c_4 = 0$",
+        "b": "$c_2 + c_4 + c_5 = 0$",
+        "c": "$c_1 + c_2 + c_4 = 0$",
+        "d": "$c_1 + c_3 + c_5 = 0$"
       },
       "explanations": {
-        "a": " Incorrect. The number of rows in the matrix is not related to the column weight.",
-        "b": " Correct! The column weight refers to the number of ones in each column, indicating how many check nodes a variable node is connected to.",
-        "c": " Incorrect. This describes the row weight, not the column weight.",
-        "d": " Incorrect. This refers to the size of the codewords of the given code, not the column weight."
-      },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "3. In a Tanner graph of an LDPC code, what do the variable nodes represent?",
-      "answers": {
-        "a": "Parity check equations",
-        "b": "Codeword coordinate",
-        "c": "Rows of $H$",
-        "d": "Error correction bits"
-      },
-      "explanations": {
-        "a": " Incorrect. Parity check equations are represented by check nodes, not variable nodes.",
-        "b": " Correct! Variable nodes represent the codeword coordinates (or the variables being solved for) in a Tanner graph.",
-        "c": " Incorrect. The rows of the parity-check matrix $H$ correspond to the check nodes, not variable nodes.",
-        "d": " Incorrect. Variable nodes represent the codeword bits, not error correction bits."
-      },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "4. How many edges would the Tanner graph corresponding to the matrix $H = \\begin{bmatrix} 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 1 & 0 & 1 & 0 & 0 & 1 \\end{bmatrix}$ contain?",
-      "answers": {
-        "a": "4",
-        "b": "8",
-        "c": "9",
-        "d": "20"
-      },
-      "explanations": {
-        "a": " Incorrect. The matrix $H$ has 9 non-zero elements, meaning 9 edges are required to represent the connections in the Tanner graph. 4 edges would not be enough.",
-        "b": " Incorrect. Although 8 is closer to the correct count, the number of non-zero elements (representing edges) is 9, not 8.",
-        "c": " Correct! The Tanner graph will have 9 edges, corresponding to the 9 non-zero elements in the parity-check matrix $H$.",
-        "d": " Incorrect. More than 18 edges would be too many for this parity-check matrix."
-      },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "5. Which of the following best describes the meaning of a $\\textit{regular}$ LDPC code?",
-      "answers": {
-        "a": "All rows have the same weight, and all columns have the same weight.",
-        "b": "The parity check matrix has full rank.",
-        "c": "The code has a constant block length.",
-        "d": "All entries of the parity check matrix are either 0 or 1."
-      },
-      "explanations": {
-        "a": " Correct! In a regular LDPC code, all rows have the same number of 1s (row weight) and all columns have the same number of 1s (column weight).",
-        "b": " Incorrect. Full rank is not a defining property of a regular LDPC code, though it may be an additional feature.",
-        "c": " Incorrect. While LDPC codes have fixed block lengths, this does not define regularity.",
-        "d": " Incorrect. All entries being 0 or 1 is a characteristic of any binary matrix, not specific to regular LDPC codes."
+        "a": "Correct! The first row of $H$ has 1s at positions 1, 3, and 4, which translates to the equation $c_1 \\oplus c_3 \\oplus c_4 = 0$.",
+        "b": "Incorrect. This corresponds to the second row of the matrix.",
+        "c": "Incorrect. Position 2 in the first row is a 0, so $c_2$ cannot be in the first equation.",
+        "d": "Incorrect. Position 5 in the first row is a 0, so $c_5$ cannot be in the first equation."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "6. Which of the following statements about Tanner graphs is correct?",
+      "question": "3. Given $H = \\begin{bmatrix} 1 & 1 & 1 & 0 \\\\ 0 & 1 & 1 & 1 \\end{bmatrix}$, which of the following is a valid codeword?",
       "answers": {
-        "a": "A Tanner graph is a unipartite graph.",
-        "b": "A Tanner graph has no variable nodes.",
-        "c": "A Tanner graph represents a bipartite graph.",
-        "d": "Tanner graphs are irrelevant to LDPC codes."
+        "a": "$[1, 1, 1, 1]$",
+        "b": "$[1, 0, 1, 1]$",
+        "c": "$[1, 1, 1, 0]$",
+        "d": "$[0, 1, 0, 1]$"
       },
       "explanations": {
-        "a": " Incorrect. A Tanner graph is a bipartite graph, not unipartite.",
-        "b": " Incorrect. Tanner graphs do have variable nodes, which represent the codeword bits.",
-        "c": " Correct! A Tanner graph is a bipartite graph, showing the relationship between variable nodes and check nodes.",
-        "d": " Tanner graphs are highly relevant in representing the parity-check matrix of LDPC codes."
+        "a": "Incorrect. Look at Row 1 of the parity check matrix. We see $1+1+1=1$.",
+        "b": "Correct! Row 1: Correct! This satisfies $Hc^T = 0$.",
+        "c": "Incorrect. Look at Row 1 of the parity check matrix. We see $1+1+1=1$.",
+        "d": "Incorrect. Look at Row 1 of the parity check matrix. We see $0+1+0=1$."
       },
-      "correctAnswer": "c",
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "4. A graph $G(V, E)$ is called bipartite if $V$ can be partitioned into $V_1$ and $V_2$ such that no edge connects two vertices of the same partition. What is the maximum number of edges a bipartite graph can have?",
+      "answers": {
+        "a": "$|V_1| + |V_2| - 1$",
+        "b": "$|V_1| \\times |V_2|$",
+        "c": "$2(|V_1| + |V_2|)$",
+        "d": "$\\frac{|V_1| \\times |V_2|}{2}$"
+      },
+      "explanations": {
+        "a": "Incorrect. This is the maximum number of edges in a simple tree, not a complete bipartite graph.",
+        "b": "Correct! A complete bipartite graph $K_{m,n}$ connects every node in one set to every node in the other, resulting in $m \\times n$ edges.",
+        "c": "Incorrect. This does not represent the multiplicative nature of connections between two sets.",
+        "d": "Incorrect. There is no reason to divide by 2 as edges only exist between the two distinct sets."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "5. If a parity-check matrix has $n$ columns and its rows are all linearly independent, what is the rank of the matrix?",
+      "answers": {
+        "a": "The number of columns ($n$)",
+        "b": "The number of rows ($n-k$)",
+        "c": "The code rate ($R$)",
+        "d": "Always 1"
+      },
+      "explanations": {
+        "a": "Incorrect. The rank is limited by the smaller dimension; in LDPC, $n-k < n$.",
+        "b": "Correct! If all rows are linearly independent, the rank is equal to the number of rows ($n-k$).",
+        "c": "Incorrect. Code rate is $k/n$, not the rank itself.",
+        "d": "Incorrect. LDPC matrices have many independent constraints, so the rank is much higher than 1."
+      },
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]
