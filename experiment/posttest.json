@@ -23,7 +23,7 @@
       "answers": {
         "a": "$H = \\begin{bmatrix} 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 0 & 1 & 0 \\\\ 1 & 0 & 1 & 0 & 0 & 1 \\end{bmatrix}$",
         "b": "$H = \\begin{bmatrix} 1 & 0 & 1 & 0 & 1 & 1 \\\\ 1 & 1 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 1 & 1 & 0 & 1 \\end{bmatrix}$",
-        "c": "$H = \\begin{bmatrix} 1 & 0 & 1 & 1 & 0 & 0 \\\\ 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 1 & 1 & 0 & 0 & 1 \\end{bmatrix}$",
+        "c": "$H = \\begin{bmatrix} 1 & 0 & 0 & 1 & 0 & 0 \\\\ 0 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 0 & 1 & 0 & 0 & 1 \\end{bmatrix}$",
         "d": "$H = \\begin{bmatrix} 1 & 0 & 1 & 1 & 0 & 1 \\\\ 1 & 1 & 0 & 0 & 1 & 0 \\\\ 0 & 1 & 1 & 0 & 0 & 1 \\end{bmatrix}$"
       },
       "explanations": {
